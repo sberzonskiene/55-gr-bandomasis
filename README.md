@@ -49,7 +49,8 @@ Would like to run this project locally? Open terminal and follow these steps:
 There is no tests for this project.
 
 🌺 Authors:
-    sberzonskiene: Github
+
+sberzonskiene: Github
 
 ⚠️ License
 Distributed under the MIT License. See LICENSE.txt for more information.
