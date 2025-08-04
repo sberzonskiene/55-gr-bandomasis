@@ -9,6 +9,6 @@ app.get('/', (req, res) => {
     })
 })
 
-app.listen(3002, () => {
-    console.log(`Server running: http://localhost:3002`);    
+app.listen(3006, () => {
+    console.log(`Server running: http://localhost:3006`);    
 });
