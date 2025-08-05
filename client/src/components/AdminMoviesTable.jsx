@@ -1,5 +1,5 @@
 import { Link } from 'react-router';
-
+import heroImg from '../assets/hero1.png';
 
 export function AdminMoviesTable() {
     return (
@@ -23,7 +23,7 @@ export function AdminMoviesTable() {
                             <tbody>
                                 <tr>
                                     <th scope="row">1</th>
-                                    <td><img src="/img/default.png" alt="Movie thumbnail" style={{ maxHeight: '4rem' }} /></td>
+                                    <td><img src={heroImg} alt="Movie thumbnail" style={{ maxHeight: '4rem' }} /></td>
                                     <td><Link to="/admin/movies/qwe">qwe</Link></td>
                                     <td><span className="badge text-bg-success">Provided</span></td>
                                     <td></td>
@@ -38,7 +38,7 @@ export function AdminMoviesTable() {
                                 </tr>
                                 <tr>
                                     <th scope="row">2</th>
-                                    <td><img src="/img/movies/movie-1753166114584-540007.jpg" alt="Movie thumbnail" style={{ maxHeight: '4rem' }} /></td>
+                                    <td><img src={heroImg} alt="Movie thumbnail" style={{ maxHeight: '4rem' }} /></td>
                                     <td><Link to="/admin/movies/asd">asd</Link></td>
                                     <td><span className="badge text-bg-success">Provided</span></td>
                                     <td>1 hour 1 minute</td>
