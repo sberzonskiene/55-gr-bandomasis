@@ -1,5 +1,6 @@
 import { Link } from 'react-router';
 
+
 export function AdminMoviesTable() {
     return (
         <div className="container mt-5">
