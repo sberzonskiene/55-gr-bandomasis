@@ -2,6 +2,8 @@ import { Link, NavLink } from "react-router";
 import logo from '../assets/react.svg';
 
 export function Header() {
+    const isLoggedIn = true;
+
     return (
         <header className="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
             <div className="col-md-3 mb-2 mb-md-0">
@@ -21,10 +23,17 @@ export function Header() {
                 </li>
             </ul>
             <div className="col-md-3 text-end">
-                <Link to="/admin" className="btn btn-primary">Dashboard</Link>
-                <Link to="/logout" className="btn btn-outline-primary me-2">Logout</Link>
-                <Link to="/register" className="btn btn-primary">Register</Link>
-                <Link to="/login" className="btn btn-outline-primary me-2">Login</Link>
+                {isLoggedIn ? (
+                    <>
+                        <Link to="/admin" className="btn btn-primary">Dashboard</Link>
+                        <Link to="/logout" className="btn btn-outline-primary">Logout</Link>
+                    </>
+                ) : (
+                    <>
+                        <Link to="/register" className="btn btn-primary">Register</Link>
+                        <Link to="/login" className="btn  btn-outline-primary">Login</Link>
+                    </>
+                )}
             </div>
         </header>
     );

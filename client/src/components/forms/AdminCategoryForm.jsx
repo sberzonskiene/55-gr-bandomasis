@@ -16,11 +16,11 @@ export function AdminCategoryForm() {
             <div className="mb-3">
                 <label className="form-label">Status</label>
                 <div className="form-check">
-                    <input type="radio" name="radios" className="form-check-input" id="status_published" required="" />
+                    <input type="radio" name="radios" className="form-check-input" id="status_published" required />
                     <label className="form-check-label" htmlFor="status_published">Published</label>
                 </div>
                 <div className="form-check">
-                    <input type="radio" name="radios" className="form-check-input" id="status_draft" checked="" required="" />
+                    <input type="radio" name="radios" className="form-check-input" id="status_draft" checked required />
                     <label className="form-check-label" htmlFor="status_draft">Draft</label>
                 </div>
             </div>
