@@ -1,8 +1,8 @@
 import { AdminPageTitle } from "../../../components/AdminPageTitle";
 import { Alert } from "../../../components/Alert";
-
+import { imgUrl } from "../../../assets/hero.png";
 export function AdminViewMoviePage() {
-    const category = {
+    const movie = {
         title: 'Action',
         url: 'action',
         description: 'Very action, much movie',
@@ -16,7 +16,7 @@ export function AdminViewMoviePage() {
             <div className="container">
                 <div className="row">
                     <div className="col-12 col-md-9 mt-5">
-                        <Alert text='Norimas filmas nerastas, todel jo perziureti yra neimanoma.' />
+                        <Alert text='Norimas filmas nerastas, todėl jo peržiūrėti yra neįmanoma.' />
                     </div>
                     <div className="col-12 col-md-9 mt-5">
                         <table className="table table-bordered border-primary">
@@ -24,8 +24,8 @@ export function AdminViewMoviePage() {
                                 <tr className="mb-3">
                                     <td>Thumbnail</td>
                                     <td>
-                                        <img style={{ maxHeight: '5rem' }} src="/img/movies/default.png" alt="Movie thumbnail" />
-                                        <p>/img/movies/default.png</p>
+                                        <img style={{ maxHeight: '5rem' }} src={imgUrl} alt="Movie thumbnail" />
+                                        <p>/assets/hero.png</p>
                                     </td>
                                 </tr>
                                 <tr className="mb-3">

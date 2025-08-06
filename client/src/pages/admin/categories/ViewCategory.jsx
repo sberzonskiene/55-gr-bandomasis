@@ -16,7 +16,7 @@ export function AdminViewCategoryPage() {
             <div className="container">
                 <div className="row">
                     <div className="col-12 col-md-9 mt-5">
-                        <Alert text='Norima kategorija nerasta, todel jos perziureti yra neimanomas.' />
+                        <Alert text='Norima kategorija nerasta, todėl jos peržiūrėti yra neįmanoma.' />
                     </div>
                     <div className="col-12 col-md-9 mt-5">
                         <table className="table table-bordered border-primary">
