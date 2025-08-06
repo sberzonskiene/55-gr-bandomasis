@@ -1,22 +1,28 @@
-export function formatDuration(minutes = -1) {
-    const min = minutes % 60;
-    const h = (minutes - min) / 60;
-
-    let minText = '';
-    if (min > 0) {
-        minText += min + ' minute';
-    }
-    if (min > 1) {
-        minText += 's';
+export function formatDuration(duration = 35.5) {
+    if (duration < 1) {
+        return '-';
     }
 
-    let hourText = '';
-    if (h > 0) {
-        hourText += h + ' hour';
-    }
-    if (h > 1) {
-        hourText += 's';
+    duration = Math.floor(duration);
+    const m = duration % 60;
+    const h = (duration - m) / 60;
+    let text = '';
+
+    if (h === 1) {
+        text += h + ' hour';
+    } if (h > 1) {
+        text += h + ' hours';
     }
 
-    return hourText + (hourText && minText ? ' ' : '') + minText;
+    if (h > 0 && m > 0) {
+        text += ' ';
+    }
+
+    if (m === 1) {
+        text += m + ' minute';
+    } if (m > 1) {
+        text += m + ' minutes';
+    }
+
+    return text;
 }

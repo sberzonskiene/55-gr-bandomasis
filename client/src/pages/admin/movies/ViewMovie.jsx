@@ -1,11 +1,18 @@
 import { AdminPageTitle } from "../../../components/AdminPageTitle";
 import { Alert } from "../../../components/Alert";
-import { imgUrl } from "../../../assets/hero.png";
+import { formatDuration } from "../../../lib/formatDuration";
+import { formatRating } from "../../../lib/formatRating";
+
 export function AdminViewMoviePage() {
     const movie = {
+        img: '/vite.svg',
         title: 'Action',
         url: 'action',
         description: 'Very action, much movie',
+        duration: 122,
+        category: 'Action',
+        releaseDate: '2025-06-07',
+        rating: 46,
         status: 'published',
     };
 
@@ -16,7 +23,7 @@ export function AdminViewMoviePage() {
             <div className="container">
                 <div className="row">
                     <div className="col-12 col-md-9 mt-5">
-                        <Alert text='Norimas filmas nerastas, todėl jo peržiūrėti yra neįmanoma.' />
+                        <Alert text='Norimas filmas nerastas, todel jo perziureti yra neimanoma.' />
                     </div>
                     <div className="col-12 col-md-9 mt-5">
                         <table className="table table-bordered border-primary">
@@ -24,43 +31,46 @@ export function AdminViewMoviePage() {
                                 <tr className="mb-3">
                                     <td>Thumbnail</td>
                                     <td>
-                                        <img style={{ maxHeight: '5rem' }} src={imgUrl} alt="Movie thumbnail" />
-                                        <p>/assets/hero.png</p>
+                                        <img style={{ maxHeight: '5rem' }} src={movie.img} alt="Movie thumbnail" />
+                                        <p>{movie.img}</p>
                                     </td>
                                 </tr>
                                 <tr className="mb-3">
                                     <td>Title</td>
-                                    <td>qwe</td>
+                                    <td>{movie.title}</td>
                                 </tr>
                                 <tr className="mb-3">
                                     <td>Url slug</td>
-                                    <td>qwe</td>
+                                    <td>{movie.url}</td>
                                 </tr>
                                 <tr className="mb-3">
                                     <td>Description</td>
-                                    <td>qwe</td>
+                                    <td>{movie.description}</td>
                                 </tr>
                                 <tr className="mb-3">
                                     <td>Duration</td>
-                                    <td></td>
+                                    <td>{formatDuration(movie.duration)}</td>
                                 </tr>
                                 <tr className="mb-3">
                                     <td>Category</td>
-                                    <td>null</td>
+                                    <td>{movie.category}</td>
                                 </tr>
                                 <tr className="mb-3">
                                     <td>Release date</td>
-                                    <td></td>
+                                    <td>{movie.releaseDate}</td>
                                 </tr>
                                 <tr className="mb-3">
                                     <td>Rating</td>
-                                    <td>0.0 ⭐</td>
+                                    <td>{formatRating(movie.rating)}</td>
                                 </tr>
                                 <tr className="mb-3">
                                     <td>Status</td>
                                     <td>
-                                        <span className="badge text-bg-success">Published</span>
-                                        <span className="badge text-bg-warning">Draft</span>
+                                        {
+                                            movie.status === 'published'
+                                                ? <span className="badge text-bg-success">Published</span>
+                                                : <span className="badge text-bg-warning">Draft</span>
+                                        }
                                     </td>
                                 </tr>
                             </tbody>
