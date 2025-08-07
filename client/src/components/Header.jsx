@@ -1,3 +1,6 @@
+import { Link, NavLink } from "react-router";
+import logo from '../assets/react.svg';
+
 export function Header() {
     const isLoggedIn = false;
 
