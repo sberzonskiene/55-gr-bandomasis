@@ -23,7 +23,7 @@ export function AdminViewMoviePage() {
             <div className="container">
                 <div className="row">
                     <div className="col-12 col-md-9 mt-5">
-                        <Alert text='Norimas filmas nerastas, todel jo perziureti yra neimanoma.' />
+                        <Alert text='Norimas filmas nerastas, todėl jo peržiūrėti yra neįmanoma.' />
                     </div>
                     <div className="col-12 col-md-9 mt-5">
                         <table className="table table-bordered border-primary">

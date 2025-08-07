@@ -1,17 +1,17 @@
 import { useState } from 'react';
 import defaultImg from '../../assets/default.png';
 
-export function AdminMovieForm() {
-    const [img, setImg] = useState('');
-    const [title, setTitle] = useState('');
-    const [url, setUrl] = useState('');
-    const [description, setDescription] = useState('');
-    const [hours, setHours] = useState(0);
-    const [minutes, setMinutes] = useState(0);
-    const [category, setCategory] = useState(0);
-    const [releaseDate, setReleaseDate] = useState('');
-    const [rating, setRating] = useState(50);
-    const [status, setStatus] = useState('draft');
+export function AdminMovieForm({ movie }) {
+    const [img, setImg] = useState(movie?.img ?? '');
+    const [title, setTitle] = useState(movie?.title ?? '');
+    const [url, setUrl] = useState(movie?.url ?? '');
+    const [description, setDescription] = useState(movie?.description ?? '');
+    const [hours, setHours] = useState(movie?.duration ? (movie.duration - movie.duration % 60) / 60 : 0);
+    const [minutes, setMinutes] = useState(movie?.duration ? movie.duration % 60 : 0);
+    const [categoryId, setCategoryId] = useState(movie?.categoryId ?? 0);
+    const [releaseDate, setReleaseDate] = useState(movie?.releaseDate ?? '');
+    const [rating, setRating] = useState(movie?.rating ?? 50);
+    const [status, setStatus] = useState(movie?.status ?? 'draft');
 
     const categories = [
         { id: 1, name: 'Action' },
@@ -21,15 +21,15 @@ export function AdminMovieForm() {
 
     return (
         <>
-            <form className="col-12 col-md-9 col-lg-6 mb-5">
+            <form className="col-12 col-md-9 col-lg-6 mt-5">
                 <img id="img_preview" className="d-block w-100 object-fit-contain"
-                    style={{ height: '20rem'}}
+                    style={{ height: '20rem', backgroundColor: '#eee' }}
                     src={img ? img : defaultImg} alt="Movie thumbnail" />
-                <p id="img_path">/img/default.png</p>
+                <p id="img_path">{img}</p>
                 <input type="file" className="form-control" id="img" name="img" />
             </form>
 
-            <form className="col-12 col-md-9 col-lg-6">
+            <form className="col-12 col-md-9 col-lg-6 mt-5">
                 <div className="mb-3">
                     <label htmlFor="title" className="form-label">Title</label>
                     <input onChange={e => setTitle(e.target.value)} value={title}
@@ -60,7 +60,7 @@ export function AdminMovieForm() {
                 </div>
                 <div className="mb-3">
                     <label htmlFor="category" className="form-label">Category</label>
-                    <select onChange={e => setCategory(e.target.value)} value={category} className="form-select" id="category">
+                    <select onChange={e => setCategoryId(e.target.value)} value={categoryId} className="form-select" id="category">
                         <option value={0}>-- choose</option>
                         {categories.map(cat => <option key={cat.id} value={cat.id}>{cat.name}</option>)}
                     </select>

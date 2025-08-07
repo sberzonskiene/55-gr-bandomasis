@@ -1,8 +1,5 @@
-import { Link, NavLink } from "react-router";
-import logo from '../assets/react.svg';
-
 export function Header() {
-    const isLoggedIn = true;
+    const isLoggedIn = false;
 
     return (
         <header className="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
@@ -31,7 +28,7 @@ export function Header() {
                 ) : (
                     <>
                         <Link to="/register" className="btn btn-primary">Register</Link>
-                        <Link to="/login" className="btn  btn-outline-primary">Login</Link>
+                        <Link to="/login" className="btn btn-outline-primary">Login</Link>
                     </>
                 )}
             </div>
