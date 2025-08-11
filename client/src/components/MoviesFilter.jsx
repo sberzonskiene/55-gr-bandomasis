@@ -3,11 +3,11 @@ export function MoviesFilter() {
         <div className="container mb-5">
             <form className="row g-3">
                 <div className="col-12 col-xl-4">
-                    <label for="title" className="form-label">Pavadinimas</label>
+                    <label htmlFor="title" className="form-label">Pavadinimas</label>
                     <input type="text" className="form-control" id="title" placeholder="Filtruoti pagal pavadinimą ar aprašą" />
                 </div>
                 <div className="col-12 col-md-4 col-xl-2">
-                    <label for="duration" className="form-label">Trukmė</label>
+                    <label htmlFor="duration" className="form-label">Trukmė</label>
                     <select id="duration" className="form-control" name="duration">
                         <option value="0">Visi</option>
                         <option value="1">0+ hour</option>
@@ -18,7 +18,7 @@ export function MoviesFilter() {
                     </select>
                 </div>
                 <div className="col-12 col-md-4 col-xl-2">
-                    <label for="category" className="form-label">Kategorija</label>
+                    <label htmlFor="category" className="form-label">Kategorija</label>
                     <select id="category" className="form-control" name="category">
                         <option value="0">Visos</option>
                         <option value="action">Action</option>
