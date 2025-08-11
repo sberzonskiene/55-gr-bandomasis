@@ -1,8 +1,10 @@
 import { Link, NavLink } from "react-router";
 import logo from '../assets/react.svg';
+import { useContext } from "react";
+import { UserContext } from "../context/user/UserContext";
 
 export function Header() {
-    const isLoggedIn = false;
+    const { isLoggedIn } = useContext(UserContext);
 
     return (
         <header className="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
