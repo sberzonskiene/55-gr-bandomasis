@@ -1,9 +1,11 @@
+import { useContext } from "react";
 import { Link } from "react-router";
 import { RegisterForm } from "../../components/forms/RegisterForm";
 import { PublicPageTitle } from "../../components/PublicPageTitle";
+import { UserContext } from "../../context/user/UserContext";
 
 export function RegisterPage() {
-    const isLoggedIn = true;
+    const { isLoggedIn } = useContext(UserContext);
 
     return (
         <main className="min-page-height">
