@@ -1,4 +1,5 @@
 import { AdminPageTitle } from "../../../components/AdminPageTitle";
+import { Alert } from "../../../components/Alert";
 import { AdminMovieForm } from "../../../components/forms/AdminMovieForm";
 
 export function AdminEditMoviePage() {
@@ -20,6 +21,9 @@ export function AdminEditMoviePage() {
 
             <div className="container">
                 <div className="row">
+                    <div className="col-12 col-md-9 mt-5">
+                        <Alert text='Norimas filmas nerasta, todel redagavimas yra neimanomas.' />
+                    </div>
                     <AdminMovieForm movie={movie} />
                 </div>
             </div>

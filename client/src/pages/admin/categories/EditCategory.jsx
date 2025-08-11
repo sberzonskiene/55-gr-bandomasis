@@ -16,7 +16,7 @@ export function AdminEditCategoryPage() {
 
             <div className="container">
                 <div className="row">
-                    <div class="col-12 col-md-9 mt-5">
+                    <div className="col-12 col-md-9 mt-5">
                         <Alert text='Norima kategorija nerasta, todėl redagavimas yra neįmanomas.' />
                     </div>
                     <AdminCategoryForm category={category} />
