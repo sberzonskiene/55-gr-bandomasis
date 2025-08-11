@@ -1,8 +1,19 @@
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { PublicPageTitle } from "../../components/PublicPageTitle";
+import { useContext } from "react";
+import { UserContext } from "../../context/user/UserContext";
 
 export function LogoutPage() {
-    const isLoggedIn = false;
+    const navigate = useNavigate();
+    const { isLoggedIn, logout } = useContext(UserContext);
+
+    function handleLogoutClick() {
+        logout();
+
+        setTimeout(() => {
+            navigate('/');
+        }, 3000);
+    }
 
     return (
         <main className="min-page-height">
@@ -13,7 +24,7 @@ export function LogoutPage() {
                         isLoggedIn
                             ? <div className="col-12">
                                 <p>Ar tikrai norite atsijungti nuo sistemos?</p>
-                                <button className="btn btn-primary">Logout</button>
+                                <button onClick={handleLogoutClick} className="btn btn-primary">Logout</button>
                             </div>
                             : <div className="col-12">
                                 <p>Jūs jau esate atsijungę nuo sistemos!</p>
