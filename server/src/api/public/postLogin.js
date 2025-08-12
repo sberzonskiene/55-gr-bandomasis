@@ -91,5 +91,9 @@ export async function postLogin(req, res) {
         .json({
             status: 'success',
             msg: 'Tu buvai sekmingai prijungtas prie sistemos',
+            user: {
+                email: userObj.email,
+                id: userObj.id,
+            },
         });
 }

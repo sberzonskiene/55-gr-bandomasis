@@ -28,6 +28,7 @@ export function LoginForm() {
             headers: {
                 'Content-Type': 'application/json',
             },
+            credentials: 'include',
             body: JSON.stringify({
                 usernameOrEmail,
                 password,
@@ -46,14 +47,16 @@ export function LoginForm() {
                         setPasswordErr(data.msg.password);
                     }
                 } else {
-                    // login('chuck@norris.lt', 1);
+                     if (data.user) {
+                        login(data.user.email, data.user.id);
+                    }
                     navigate('/admin');
                 }
             })
             .catch(console.error);
     }
 
-    return (
+return (
         <form onSubmit={handleFormSubmit} className="col-12 col-sm-10 col-md-8 col-lg-6 col-xl-4">
             {formErr && <div className="alert alert-danger">{formErr}</div>}
             <div className="mb-4">
