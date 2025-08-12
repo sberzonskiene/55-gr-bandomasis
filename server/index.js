@@ -1,5 +1,6 @@
 import express from 'express';
 import cors from 'cors';
+import helmet from 'helmet';
 
 import { postRegister } from './src/api/public/postRegister.js';
 import { postLogin } from './src/api/public/postLogin.js';
@@ -7,6 +8,7 @@ import { postLogin } from './src/api/public/postLogin.js';
 const app = express();
 
 app.use(express.json());
+app.use(helmet());
 app.use(cors({
     credentials: true,
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
