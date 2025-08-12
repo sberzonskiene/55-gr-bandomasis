@@ -28,7 +28,7 @@ export function MoviesFilter() {
                     </select>
                 </div>
                 <div className="col-12 col-md-4 col-xl-2">
-                    <label for="rating" className="form-label">Reitingas</label>
+                    <label htmlFor="rating" className="form-label">Reitingas</label>
                     <select id="rating" className="form-control" name="rating">
                         <option value="0">Visi</option>
                         <option value="1">1+</option>

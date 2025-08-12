@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router";
 import { UserContext } from "../../context/user/UserContext";
 
@@ -6,11 +6,19 @@ export function LoginForm() {
     const navigate = useNavigate();
     const { login } = useContext(UserContext);
 
+    const [usernameOrEmail, setUsernameOrEmail] = useSet('');
+    const [usernameOrEmailErr, setUsernameOrEmailErr] = useSet('');
+
+    const [password, setPassword] = useState('');
+    const [passwordErr, setPasswordErr] = useState('');
+
     function handleFormSubmit(e) {
         e.preventDefault();
-        // fetch
+        
         login('chuck@norris.lt', 1);
         navigate('/admin');
+        setUsernameOrEmailErr('email error');
+        setPasswordErr('email error');
     }
 
     return (
