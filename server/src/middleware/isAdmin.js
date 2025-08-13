@@ -5,5 +5,6 @@ export async function isAdmin(req, res, next) {
             msg: 'This route is protected - login first',
         });
     }
+
     return next();
 }
