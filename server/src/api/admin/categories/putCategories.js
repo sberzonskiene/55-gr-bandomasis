@@ -56,6 +56,6 @@ export async function putCategories(req, res) {
 
     return res.status(200).json({
         status: 'success',
-        msg: 'Sekmingai atnaujinta filmu kategorija',
+        msg: 'Sekmingai atnaujinta filmų kategorija',
     });
 }
