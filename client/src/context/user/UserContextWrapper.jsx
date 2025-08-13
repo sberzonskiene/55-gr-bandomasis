@@ -16,11 +16,10 @@ export function UserContextWrapper(props) {
             .then(res => res.json())
             .then(data => {
                 if (data.status === 'success') {
-                    console.log(data);
-                    login();
+                    login(data.user.email, data.user.id);
                 }
             })
-            catch(console.error);   
+            .catch(console.error);   
     }, []);
 
     function login(email, userId) {
