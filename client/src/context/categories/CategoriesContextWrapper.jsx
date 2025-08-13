@@ -1,53 +1,46 @@
 import { useEffect, useState } from "react";
-import { UserContext } from "./UserContext";
-import { initialUserContext } from "./initialUserContext";
+import { CategoriesContext } from "./CategoriesContext";
+import { initialCategoriesContext } from "./initialCategoriesContext";
 
-export function UserContextWrapper(props) {
-    const [isLoggedIn, setIsLoggedIn] = useState(initialUserContext.isLoggedIn);
-    const [role, setRole] = useState(initialUserContext.role);
-    const [email, setEmail] = useState(initialUserContext.email);
-    const [userId, setUserId] = useState(initialUserContext.userId);
+export function CategoriesContextWrapper(props) {
+    const [publicCategories, setPublicCategories] = useState(initialCategoriesContext.publicCategories);
+    const [adminCategories, setAdminCategories] = useState(initialCategoriesContext.adminCategories);
 
     useEffect(() => {
-        fetch('http://localhost:5519/api/login', {
+        fetch('http://localhost:5519/api/categories', {
             method: 'GET',
-            credentials: 'include',
         })
             .then(res => res.json())
             .then(data => {
                 if (data.status === 'success') {
-                    login(data.user.email, data.user.id);
+                    setPublicCategories(() => data.categories);
                 }
             })
-            .catch(console.error);   
+            .catch(console.error);
     }, []);
 
-    function login(email, userId) {
-        setIsLoggedIn(true);
-        setRole('admin');
-        setEmail(email);
-        setUserId(userId);
-    }
-
-    function logout() {
-        setIsLoggedIn(initialUserContext.isLoggedIn);
-        setRole(initialUserContext.role);
-        setEmail(initialUserContext.email);
-        setUserId(initialUserContext.userId);
-    }
+    // useEffect(() => {
+    //     fetch('http://localhost:5519/api/admin/categories', {
+    //         method: 'GET',
+    //         credentials: 'include',
+    //     })
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             if (data.status === 'success') {
+    //                 setAdminCategories(() => data.categories);
+    //             }
+    //         })
+    //         .catch(console.error);
+    // }, []);
 
     const values = {
-        isLoggedIn,
-        role,
-        email,
-        userId,
-        login,
-        logout,
+        publicCategories,
+        adminCategories,
     };
 
     return (
-        <UserContext.Provider value={values}>
+        <CategoriesContext.Provider value={values}>
             {props.children}
-        </UserContext.Provider>
+        </CategoriesContext.Provider>
     )
 }

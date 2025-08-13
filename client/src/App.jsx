@@ -24,11 +24,13 @@ import { AdminMoviesPublishedPage } from './pages/admin/movies/MoviesPublished';
 import { AdminMoviesDraftPage } from './pages/admin/movies/MoviesDraft';
 import { LogoutPage } from './pages/public/Logout';
 import { UserContextWrapper } from './context/user/UserContextWrapper';
+import { CategoriesContextWrapper } from './context/categories/CategoriesContextWrapper';
 
 export function App() {
   return (
     <UserContextWrapper>
-      <BrowserRouter>
+      <CategoriesContextWrapper>
+        <BrowserRouter>
         <Routes>
           <Route element={<PublicLayout />}>
             <Route path='/' index element={<HomePage />} />
@@ -63,7 +65,8 @@ export function App() {
             <Route path='*' element={<NotFoundPage />} />
           </Route>
         </Routes>
-      </BrowserRouter>
+        </BrowserRouter>
+      </CategoriesContextWrapper>
     </UserContextWrapper>
   );
 }
