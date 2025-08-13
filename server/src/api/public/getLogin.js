@@ -1,5 +1,5 @@
 export function getLogin(req, res) {
-    if (req,user.isLoggedIn) {
+    if (req.user.isLoggedIn) {
         return res
             .json({
                 status: 'success',
