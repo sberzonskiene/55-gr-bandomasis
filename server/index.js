@@ -2,11 +2,16 @@ import express from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
 
-import { postRegister } from './src/api/public/postRegister.js';
-import { postLogin } from './src/api/public/postLogin.js';
+import { postPublicRegister } from './src/api/public/postRegister.js';
+import { postPublicLogin } from './src/api/public/postLogin.js';
 import { getLogin } from './src/api/public/getLogin.js';
 import { cookieParser } from './src/middleware/cookieParser.js';
 import { userData } from './src/middleware/userData.js';
+import { postAdminCategories } from './src/api/admin/categories/postCategories.js';
+import { isAdmin } from './src/middleware/isAdmin.js';
+import { getPublicCategories } from './src/api/public/getCategories.js';
+import { getAdminCategories } from './src/api/admin/categories/getCategories.js';
+import { isPublic } from './src/middleware/isPublic.js';
 
 const app = express();
 
@@ -27,12 +32,14 @@ app.get('/', (req, res) => {
     });
 });
 
-app.post('/api/register', postRegister);
+app.post('/api/register', isPublic, postPublicRegister);
+app.post('/api/login', isPublic, postPublicLogin);
 
-app.post('/api/login', postLogin);
-app.get('/api/login', getLogin);
+app.get('/api/categories', getPublicCategories);
 
-app.post('/admin/categories', postRegister);
+app.get('/api/login', isAdmin, getLogin);
+app.get('/api/admin/categories', isAdmin, getAdminCategories);
+app.post('/api/admin/categories', isAdmin, postAdminCategories);
 
 app.use((err, req, res, next) => {
     console.log(err);
