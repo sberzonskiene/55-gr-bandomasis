@@ -32,6 +32,8 @@ app.post('/api/register', postRegister);
 app.post('/api/login', postLogin);
 app.get('/api/login', getLogin);
 
+app.post('/admin/categories', postRegister);
+
 app.use((err, req, res, next) => {
     console.log(err);
     return res.status(500).send('Server error');
