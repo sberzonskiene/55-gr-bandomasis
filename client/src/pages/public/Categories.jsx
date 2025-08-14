@@ -6,21 +6,6 @@ import { CategoriesContext } from '../../context/categories/CategoriesContext';
 export function CategoriesPage() {
     const { publicCategories } = useContext(CategoriesContext);
 
-    const categoriesData = [
-        {
-            title: 'Action',
-            description: 'Lorem ipsum dolor sit amet.',
-            moviesCount: 7,
-            urlSlug: 'action',
-        },
-        {
-            title: 'Crime',
-            description: 'Very lorem ipsum very dolor sit amet.',
-            moviesCount: 10,
-            urlSlug: 'crime',
-        },
-    ];
-
     return (
         <main className='min-page-height'>
             <PublicPageTitle title='Categories' />
