@@ -19,23 +19,33 @@ export function CategoriesContextWrapper(props) {
             .catch(console.error);
     }, []);
 
-    // useEffect(() => {
-    //     fetch('http://localhost:5519/api/admin/categories', {
-    //         method: 'GET',
-    //         credentials: 'include',
-    //     })
-    //         .then(res => res.json())
-    //         .then(data => {
-    //             if (data.status === 'success') {
-    //                 setAdminCategories(() => data.categories);
-    //             }
-    //         })
-    //         .catch(console.error);
-    // }, []);
+    useEffect(() => {
+        fetch('http://localhost:5519/api/admin/categories', {
+            method: 'GET',
+            credentials: 'include',
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    setAdminCategories(() => data.categories);
+                }
+            })
+            .catch(console.error);
+    }, []);
+
+    function getPublicCategoryByUrlSlug(url) {
+        return publicCategories.find(cat => cat.url_slug === url);
+    }
+
+    function getAdminCategoryByUrlSlug(url) {
+        return adminCategories.find(cat => cat.url_slug === url);
+    }
 
     const values = {
         publicCategories,
         adminCategories,
+        getPublicCategoryByUrlSlug,
+        getAdminCategoryByUrlSlug,
     };
 
     return (
