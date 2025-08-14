@@ -1,4 +1,4 @@
-export function AdminViewCategoryTable({data}) {
+export function AdminViewCategoryTable({ data }) {
     return (
         <table className="table table-bordered border-primary">
             <tbody>

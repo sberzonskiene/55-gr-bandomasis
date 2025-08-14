@@ -31,40 +31,40 @@ export function App() {
     <UserContextWrapper>
       <CategoriesContextWrapper>
         <BrowserRouter>
-        <Routes>
-          <Route element={<PublicLayout />}>
-            <Route path='/' index element={<HomePage />} />
-            <Route path='/movies' element={<MoviesPage />} />
-            <Route path='/movies/:movie' element={<MovieInnerPage />} />
-            <Route path='/categories' element={<CategoriesPage />} />
-            <Route path='/categories/:category' element={<CategoryInnerPage />} />
-            <Route path='/register' element={<RegisterPage />} />
-            <Route path='/login' element={<LoginPage />} />
-            <Route path='/logout' element={<LogoutPage />} />
-          </Route>
+          <Routes>
+            <Route element={<PublicLayout />}>
+              <Route path='/' index element={<HomePage />} />
+              <Route path='/movies' element={<MoviesPage />} />
+              <Route path='/movies/:movie' element={<MovieInnerPage />} />
+              <Route path='/categories' element={<CategoriesPage />} />
+              <Route path='/categories/:category' element={<CategoryInnerPage />} />
+              <Route path='/register' element={<RegisterPage />} />
+              <Route path='/login' element={<LoginPage />} />
+              <Route path='/logout' element={<LogoutPage />} />
+            </Route>
 
-          <Route element={<AdminLayout />}>
-            <Route path='/admin' element={<AdminDasboardPage />} />
+            <Route element={<AdminLayout />}>
+              <Route path='/admin' element={<AdminDasboardPage />} />
 
-            <Route path='/admin/movies' element={<AdminMoviesAllPage />} />
-            <Route path='/admin/movies/new' element={<AdminNewMoviePage />} />
-            <Route path='/admin/movies/:movie' element={<AdminViewMoviePage />} />
-            <Route path='/admin/movies/:movie/edit' element={<AdminEditMoviePage />} />
-            <Route path='/admin/movies/published' element={<AdminMoviesPublishedPage />} />
-            <Route path='/admin/movies/draft' element={<AdminMoviesDraftPage />} />
+              <Route path='/admin/movies' element={<AdminMoviesAllPage />} />
+              <Route path='/admin/movies/new' element={<AdminNewMoviePage />} />
+              <Route path='/admin/movies/:movie' element={<AdminViewMoviePage />} />
+              <Route path='/admin/movies/:movie/edit' element={<AdminEditMoviePage />} />
+              <Route path='/admin/movies/published' element={<AdminMoviesPublishedPage />} />
+              <Route path='/admin/movies/draft' element={<AdminMoviesDraftPage />} />
 
-            <Route path='/admin/categories' element={<AdminCategoriesAllPage />} />
-            <Route path='/admin/categories/new' element={<AdminNewCategoryPage />} />
-            <Route path='/admin/categories/:category' element={<AdminViewCategoryPage />} />
-            <Route path='/admin/categories/:category/edit' element={<AdminEditCategoryPage />} />
-            <Route path='/admin/categories/published' element={<AdminCategoriesPublishedPage />} />
-            <Route path='/admin/categories/draft' element={<AdminCategoriesDraftPage />} />
-          </Route>
+              <Route path='/admin/categories' element={<AdminCategoriesAllPage />} />
+              <Route path='/admin/categories/new' element={<AdminNewCategoryPage />} />
+              <Route path='/admin/categories/:category' element={<AdminViewCategoryPage />} />
+              <Route path='/admin/categories/:category/edit' element={<AdminEditCategoryPage />} />
+              <Route path='/admin/categories/published' element={<AdminCategoriesPublishedPage />} />
+              <Route path='/admin/categories/draft' element={<AdminCategoriesDraftPage />} />
+            </Route>
 
-          <Route element={<PublicLayout />}>
-            <Route path='*' element={<NotFoundPage />} />
-          </Route>
-        </Routes>
+            <Route element={<PublicLayout />}>
+              <Route path='*' element={<NotFoundPage />} />
+            </Route>
+          </Routes>
         </BrowserRouter>
       </CategoriesContextWrapper>
     </UserContextWrapper>
