@@ -13,24 +13,30 @@ This project is for educational porpuses only. Pull request are welcome, but pri
 
 # 💻 Prerequisites
 Node.js - download and install
+
     https://nodejs.org
 
 Git - download and install
+
     https://git-scm.com
 
 # 🏃 Run locally
 Would like to run this project locally? Open terminal and follow these steps:
 
-1. Clone the repo   
+1. Clone the repo 
+
     git clone https://github.com/sberzonskiene/55-gr-final
 
 2. Install main NPM packages
+
     npm i
 
 3. Install sub-directories NPM packages
+
     npm run install-all
 
 4. Run the servers
+
     npm run dev
 
 # 🧪 Running tests
