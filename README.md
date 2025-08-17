@@ -1,20 +1,20 @@
-# Movies - The Final Fantasy Project 
+# Movies - The Final Project 
 
 website design project
 
-🌟 About
+# 🌟 About
 
 This project is for educational porpuses only. Pull request are welcome, but priority for project authors! Thank you for your cooperation!
 
-🎯 Project features/goals
+# 🎯 Project features/goals
 
  * CLIENT: react.js
  * SERVER: express.js
  * API
 
-🧰 Getting Started
+# 🧰 Getting Started
 
-💻 Prerequisites
+# 💻 Prerequisites
 
 Node.js - download and install
 
@@ -24,7 +24,7 @@ Git - download and install
 
     https://git-scm.com
 
-🏃 Run locally
+# 🏃 Run locally
 
 Would like to run this project locally? Open terminal and follow these steps:
 
@@ -44,16 +44,16 @@ Would like to run this project locally? Open terminal and follow these steps:
 
     npm run dev
 
-🧪 Running tests
+# 🧪 Running tests
 
 There is no tests for this project.
 
-🌺 Authors:
+# 🌺 Authors:
 
 sberzonskiene: Github
 
-⚠️ License
+# ⚠️ License
 Distributed under the MIT License. See LICENSE.txt for more information.
 
-🔗 Other resources
+# 🔗 Other resources
 No other resources.
