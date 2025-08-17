@@ -12,6 +12,7 @@ This project is for educational porpuses only. Pull request are welcome, but pri
 # 🧰 Getting Started
 
 # 💻 Prerequisites
+
 Node.js - download and install
 
     https://nodejs.org
@@ -23,7 +24,7 @@ Git - download and install
 # 🏃 Run locally
 Would like to run this project locally? Open terminal and follow these steps:
 
-1. Clone the repo 
+1. Clone the repo   
 
     git clone https://github.com/sberzonskiene/55-gr-final
 
