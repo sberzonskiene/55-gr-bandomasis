@@ -27,7 +27,7 @@ export function LogoutPage() {
                                 <button onClick={handleLogoutClick} className="btn btn-primary">Logout</button>
                             </div>
                             : <div className="col-12">
-                                <p>Jūs jau esate atsijungę nuo sistemos!</p>
+                                <p>Jūs jau esate atsijungę nuo sistemos! Už 3 sekundžių Jus perkerls į Home puslapį!</p>
                                 <Link to='/' className="btn btn-primary">Go home</Link>
                             </div>
                     }
