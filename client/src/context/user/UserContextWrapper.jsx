@@ -19,7 +19,7 @@ export function UserContextWrapper(props) {
                     login(data.user.email, data.user.id);
                 }
             })
-            .catch(console.error);   
+            .catch(console.error);
     }, []);
 
     function login(email, userId) {
