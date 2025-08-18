@@ -2,7 +2,6 @@ import { useContext, useState } from "react";
 import { CategoriesContext } from "../../context/categories/CategoriesContext";
 import { useNavigate } from "react-router";
 
-
 export function AdminCategoryForm({ api, method, category }) {
     const [title, setTitle] = useState(category?.title ?? '');
     const [url, setUrl] = useState(category?.url_slug ?? '');
@@ -11,7 +10,6 @@ export function AdminCategoryForm({ api, method, category }) {
 
     const { updateAdminCategories, updatePublicCategories } = useContext(CategoriesContext);
     const navigate = useNavigate();
-
 
     function handleFormSubmit(e) {
         e.preventDefault();
