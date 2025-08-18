@@ -2,6 +2,7 @@ import { PublicPageTitle } from '../../components/PublicPageTitle';
 import { MovieCard } from '../../components/MovieCard';
 
 export function CategoryInnerPage() {
+    const { publicCategories } = useContext(Categories)
     const moviesData = [{}, {}];
 
     return (
