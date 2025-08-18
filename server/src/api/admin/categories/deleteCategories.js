@@ -35,6 +35,6 @@ export async function deleteCategories(req, res) {
 
     return res.status(200).json({
         status: 'success',
-        msg: 'Filmu kategorija istrinta sekmingai',
+        msg: 'Filmų kategorija ištrinta sekmingai',
     });
 }
