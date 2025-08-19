@@ -52,6 +52,10 @@ export function CategoriesContextWrapper(props) {
         return adminCategories.find(category => category.url_slug === urlSlug);
     }
 
+    function getAdminCategoryById(id) {
+        return adminCategories.find(category => category.id === id);
+    }
+
     useEffect(updatePublicCategories, []);
 
     useEffect(() => {
@@ -67,6 +71,7 @@ export function CategoriesContextWrapper(props) {
         adminCategories,
         getPublicCategoryByUrlSlug,
         getAdminCategoryByUrlSlug,
+        getAdminCategoryById,
         updatePublicCategories,
         updateAdminCategories,
         deletePublicCategory,
