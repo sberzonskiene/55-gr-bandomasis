@@ -2,3 +2,4 @@ node_modules
 .DS.Store
 .vscode
 
+public/img/movies

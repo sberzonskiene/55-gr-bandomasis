@@ -1,4 +1,4 @@
-import { AdminMoviesTable } from "../../../components/AdminMoviesTable";
+import { AdminMoviesTable } from "../../../components/admin-movies-table/AdminMoviesTable";
 import { AdminPageTitle } from "../../../components/AdminPageTitle";
 
 export function AdminMoviesDraftPage() {

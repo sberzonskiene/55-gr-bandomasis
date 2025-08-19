@@ -1,11 +1,14 @@
-import { AdminMoviesTable } from "../../../components/AdminMoviesTable";
+import { AdminMoviesTable } from "../../../components/admin-movies-table/AdminMoviesTable";
 import { AdminPageTitle } from "../../../components/AdminPageTitle";
+import { MoviesContext } from "../../../context/movies/MoviesContext";
 
 export function AdminMoviesAllPage() {
-    return (
+    const { adminMovies } =useContext(MoviesContext);
+
+    return(
         <main>
             <AdminPageTitle title="All movies" />
-            <AdminMoviesTable />
+            <AdminMoviesTable movies={adminMovies}/>
         </main>
     );
 }
