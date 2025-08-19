@@ -18,9 +18,10 @@ export function AdminViewCategoryPage() {
             <div className="container">
                 <div className="row">
                     <div className="col-12 col-md-9 mt-5">
-                        {categoryData
-                            ? <AdminViewCategoryTable data={categoryData} />
-                            : <Alert text='Norima kategorija nerasta, todėl jos peržiūrėti yra neįmanoma.' />
+                        {
+                            categoryData
+                                ? <AdminViewCategoryTable data={categoryData} />
+                                : <Alert text='Norima kategorija nerasta, todėl jos peržiūrėti yra neįmanoma.' />
                         }
                     </div>
                 </div>
