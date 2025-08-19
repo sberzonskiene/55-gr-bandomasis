@@ -22,7 +22,7 @@ export function AdminMoviesTableRow({ data }) {
             <td>{
                 data.duration_in_minutes
                     ? formatDuration(data.duration_in_minutes)
-                    : <span class="badge text-bg-warning">Not selected</span>
+                    : <span className="badge text-bg-warning">Not selected</span>
             }</td>
             <td>
                 {
