@@ -4,6 +4,7 @@ import { Alert } from "../../../components/Alert";
 import { AdminCategoryForm } from "../../../components/forms/AdminCategoryForm";
 import { CategoriesContext } from "../../../context/categories/CategoriesContext";
 import { useParams } from "react-router";
+import { SERVER_ADDRESS } from "../../../env";
 
 export function AdminEditCategoryPage() {
     const { getAdminCategoryByUrlSlug } = useContext(CategoriesContext);
@@ -20,7 +21,7 @@ export function AdminEditCategoryPage() {
                     {
                         categoryData
                             ? <AdminCategoryForm
-                                api={"http://localhost:5519/api/admin/categories/" + categoryData.url_slug}
+                                api={SERVER_ADDRESS + "/api/admin/categories/" + categoryData.url_slug}
                                 method="PUT"
                                 category={categoryData} />
                             : (
