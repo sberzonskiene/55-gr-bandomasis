@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { CategoriesContext } from "./CategoriesContext";
 import { initialCategoriesContext } from "./initialCategoriesContext";
 import { UserContext } from "../user/UserContext";
+import { SERVER_ADDRESS } from "../../env";
 
 export function CategoriesContextWrapper(props) {
     const [publicCategories, setPublicCategories] = useState(initialCategoriesContext.publicCategories);
@@ -10,7 +11,7 @@ export function CategoriesContextWrapper(props) {
     const { isLoggedIn } = useContext(UserContext);
 
     function updatePublicCategories() {
-        fetch('http://localhost:5519/api/categories', {
+        fetch(SERVER_ADDRESS + '/api/categories', {
             method: 'GET',
         })
             .then(res => res.json())
@@ -23,7 +24,7 @@ export function CategoriesContextWrapper(props) {
     }
 
     function updateAdminCategories() {
-        fetch('http://localhost:5519/api/admin/categories', {
+        fetch(SERVER_ADDRESS + '/api/admin/categories', {
             method: 'GET',
             credentials: 'include',
         })

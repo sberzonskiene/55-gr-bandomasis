@@ -10,9 +10,6 @@ export function MovieCard({ movie }) {
         return;
     }
 
-    console.log(movie);
-    console.log(publicCategories);
-
     return (
         <div className="col-12 col-md-6">
             <div className="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
@@ -20,9 +17,9 @@ export function MovieCard({ movie }) {
                     <strong className="d-inline-block mb-2 text-primary-emphasis">{categoryData.title}</strong>
                     <h3 className="mb-0">{movie.title}</h3>
                     <p className="card-text mb-auto">{movie.description}</p>
-                    <div className="mb-1 text-body-secondary">Released: 1999-03-31</div>
-                    <div className="mb-1 text-body-secondary">Duration: 2 hours 16 minutes</div>
-                    <div className="mb-1 text-body-secondary">Rating: 4.3 ⭐</div>
+                    <div className="mb-1 text-body-secondary">{movie.release_data}</div>
+                    <div className="mb-1 text-body-secondary">{movie.duration_in_minutes}</div>
+                    <div className="mb-1 text-body-secondary">{movie.rating} ⭐</div>
                     <a href="/movies/matrix" className="icon-link gap-1 icon-link-hover stretched-link">
                         Continue reading
                     </a>

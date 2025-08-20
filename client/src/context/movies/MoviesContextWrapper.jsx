@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { MoviesContext } from "./MoviesContext";
 import { initialMoviesContext } from "./initialMoviesContext";
 import { UserContext } from "../user/UserContext";
+import { SERVER_ADDRESS } from "../../env";
 
 export function MoviesContextWrapper(props) {
     const [publicMovies, setPublicMovies] = useState(initialMoviesContext.publicMovies);
@@ -10,7 +11,7 @@ export function MoviesContextWrapper(props) {
     const { isLoggedIn } = useContext(UserContext);
 
     function updatePublicMovies() {
-        fetch('http://localhost:5519/api/movies', {
+        fetch(SERVER_ADDRESS + '/api/movies', {
             method: 'GET',
         })
             .then(res => res.json())
@@ -23,7 +24,7 @@ export function MoviesContextWrapper(props) {
     }
 
     function updateAdminMovies() {
-        fetch('http://localhost:5519/api/admin/movies', {
+        fetch(SERVER_ADDRESS + '/api/admin/movies', {
             method: 'GET',
             credentials: 'include',
         })
