@@ -6,10 +6,20 @@ import { SERVER_ADDRESS } from '../../env';
 export function AdminMovieForm({ movie }) {
     const { adminCategories } = useContext(CategoriesContext);
 
+    const [generalErr, setGeneralErr] = useState('');
+
     const [img, setImg] = useState(movie?.img ?? '');
+    const [imgErr, setImgErr] = useState('');
+
     const [title, setTitle] = useState(movie?.title ?? '');
+    const [titleErr, setTitleErr] = useState('');
+
     const [url, setUrl] = useState(movie?.url ?? '');
+    const [urlErr, setUrlErr] = useState('');
+
     const [description, setDescription] = useState(movie?.description ?? '');
+    const [descriptionErr, setDescriptionErr] = useState('');
+
     const [hours, setHours] = useState(movie?.duration ? (movie.duration - movie.duration % 60) / 60 : 0);
     const [minutes, setMinutes] = useState(movie?.duration ? movie.duration % 60 : 0);
     const [categoryId, setCategoryId] = useState(movie?.categoryId ?? 0);
@@ -56,10 +66,29 @@ export function AdminMovieForm({ movie }) {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
+                if (data.status === 'error') {
+                    if (typeof data.msg === 'string') {
+                        setGeneralErr(data.msg);
+                    } else {
+                        if (data.msg.title) {
+                            setTitleErr(data.msg.title);
+                        }
+                        if (data.msg.description) {
+                            setDescriptionErr(data.msg.description);
+                        }
+                        if (data.msg.url) {
+                            setUrlErr(data.msg.url);
+                        }
+                        if (data.msg.img) {
+                            setImgErr(data.msg.img);
+                        }
+                    }
+                }
             })
             .catch(console.error);
     }
+
+    // TODO: reik <alert> elemento, bendrinems klaidoms rodyti
 
     return (
         <>
@@ -68,24 +97,28 @@ export function AdminMovieForm({ movie }) {
                     style={{ height: '20rem', backgroundColor: '#eee' }}
                     src={img ? img : defaultImg} alt="Movie thumbnail" />
                 <p id="img_path">{img}</p>
-                <input type="file" className="form-control" id="img" name="img" />
+                <input type="file" className={"form-control" + (imgErr ? ' is-invalid' : '')} id="img" name="img" />
+                <div className="invalid-feedback">{imgErr}</div>
             </form>
 
             <form onSubmit={handleMainFormSubmit} className="col-12 col-md-9 col-lg-6 mt-5">
                 <div className="mb-3">
                     <label htmlFor="title" className="form-label">Title</label>
                     <input onChange={e => setTitle(e.target.value)} value={title}
-                        type="text" className="form-control" id="title" required />
+                        type="text" className={"form-control" + (titleErr ? ' is-invalid' : '')} id="title" required />
+                    <div className="invalid-feedback">{titleErr}</div>
                 </div>
                 <div className="mb-3">
                     <label htmlFor="url" className="form-label">Url slug</label>
                     <input onChange={e => setUrl(e.target.value)} value={url}
-                        type="text" className="form-control" id="url" required />
+                        type="text" className={"form-control" + (urlErr ? ' is-invalid' : '')} id="url" required />
+                    <div className="invalid-feedback">{urlErr}</div>
                 </div>
                 <div className="mb-3">
                     <label htmlFor="description" className="form-label">Description</label>
                     <textarea onChange={e => setDescription(e.target.value)} value={description}
-                        className="form-control" id="description"></textarea>
+                        className={"form-control" + (descriptionErr ? ' is-invalid' : '')} id="description"></textarea>
+                    <div className="invalid-feedback">{descriptionErr}</div>
                 </div>
                 <div className="row">
                     <p>Duration</p>
@@ -109,20 +142,24 @@ export function AdminMovieForm({ movie }) {
                 </div>
                 <div className="mb-3">
                     <label htmlFor="release_date" className="form-label">Release date</label>
-                    <input onChange={e => setReleaseDate(e.target.value)} value={releaseDate} type="date" className="form-control" id="release_date" />
+                    <input onChange={e => setReleaseDate(e.target.value)} value={releaseDate} type="date"
+                        className="form-control" id="release_date" />
                 </div>
                 <div className="mb-3">
                     <label htmlFor="rating" className="form-label">Rating</label>
-                    <input onChange={e => setRating(e.target.value * 10)} value={rating / 10} type="number" min="1" max="5" step="0.1" className="form-control" id="rating" />
+                    <input onChange={e => setRating(e.target.value * 10)} value={rating / 10} type="number"
+                        min="1" max="5" step="0.1" className="form-control" id="rating" />
                 </div>
                 <div className="mb-3">
                     <label className="form-label">Status</label>
                     <div className="form-check">
-                        <input onChange={() => setStatus('published')} checked={status === 'published' ? 'checked' : ''} type="radio" name="radios" className="form-check-input" id="status_published" />
+                        <input onChange={() => setStatus('published')} checked={status === 'published' ? 'checked' : ''}
+                            type="radio" name="radios" className="form-check-input" id="status_published" />
                         <label className="form-check-label" htmlFor="status_published">Published</label>
                     </div>
                     <div className="form-check">
-                        <input onChange={() => setStatus('draft')} checked={status === 'draft' ? 'checked' : ''} type="radio" name="radios" className="form-check-input" id="status_draft" />
+                        <input onChange={() => setStatus('draft')} checked={status === 'draft' ? 'checked' : ''}
+                            type="radio" name="radios" className="form-check-input" id="status_draft" />
                         <label className="form-check-label" htmlFor="status_draft">Draft</label>
                     </div>
                 </div>
