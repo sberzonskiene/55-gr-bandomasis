@@ -4,7 +4,7 @@ export async function getAdminCategories(req, res) {
     try {
         const sql = `
             SELECT categories.*,
-            ( 
+            (
                 SELECT COUNT(*)
                 FROM movies
                 WHERE category_id = categories.id
@@ -26,4 +26,3 @@ export async function getAdminCategories(req, res) {
         });
     }
 }
-

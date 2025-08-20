@@ -4,7 +4,7 @@ import { IsValid } from "../../../lib/IsValid.js";
 export async function postAdminCategories(req, res) {
     const [err, msg] = IsValid.fields(req.body, {
         title: 'nonEmptyString',
-        url: 'nonEmptyString',
+        url: 'url',
         status: 'nonEmptyString',
     }, {
         description: 'nonEmptyString',
@@ -61,6 +61,6 @@ export async function postAdminCategories(req, res) {
 
     return res.status(201).json({
         status: 'success',
-        msg: 'Sekmingai sukurta filmu kategorija',
+        msg: 'Sekmingai sukurta filmų kategorija',
     });
 }

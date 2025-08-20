@@ -183,4 +183,35 @@ export class IsValid {
 
         return [false, ''];
     }
+
+    static url(text) {
+        if (typeof text !== 'string') {
+            return [true, 'Turi būti tekstas'];
+        }
+
+        text = text.trim();
+
+        if (text.length === 0) {
+            return [true, 'Nuoroda turi būti ne tuščia'];
+        }
+
+        if (text.includes(' ')) {
+            return [true, 'Nuoroda negali turėti tarpo simbolio'];
+        }
+
+        const allowedSymbols = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_!';
+        const errors = [];
+
+        for (const s of text) {
+            if (!allowedSymbols.includes(s) && !errors.includes(s)) {
+                errors.push(s);
+            }
+        }
+
+        if (errors.length) {
+            return [true, `Nuoroda negali turėti šių simbolių: ${errors.join(', ')}`];
+        }
+
+        return [false, ''];
+    }
 }

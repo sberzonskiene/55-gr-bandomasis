@@ -19,6 +19,7 @@ import { getAdminMovies } from './src/api/admin/movies/getMovies.js';
 import { postAdminMovies } from './src/api/admin/movies/postMovies.js';
 import { putAdminMovies } from './src/api/admin/movies/putMovies.js';
 import { deleteAdminMovies } from './src/api/admin/movies/deleteMovies.js';
+import { PORT } from './src/env.js';
 
 const app = express();
 
@@ -69,6 +70,6 @@ app.get('*error', (req, res) => {
     });
 });
 
-app.listen(5519, () => {
-    console.log(`Server running: http://localhost:5519`);
+app.listen(PORT, () => {
+    console.log(`Server running: http://localhost:${PORT}`);
 });

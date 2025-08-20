@@ -1,6 +1,8 @@
 import { useContext } from 'react';
 import imgUrl from '../assets/hero.png';
 import { CategoriesContext } from '../context/categories/CategoriesContext';
+import { formatRating } from '../lib/formatRating';
+import { formatDuration } from '../lib/formatDuration'; 
 
 export function MovieCard({ movie }) {
     const { publicCategories } = useContext(CategoriesContext);
@@ -17,9 +19,9 @@ export function MovieCard({ movie }) {
                     <strong className="d-inline-block mb-2 text-primary-emphasis">{categoryData.title}</strong>
                     <h3 className="mb-0">{movie.title}</h3>
                     <p className="card-text mb-auto">{movie.description}</p>
-                    <div className="mb-1 text-body-secondary">{movie.release_data}</div>
-                    <div className="mb-1 text-body-secondary">{movie.duration_in_minutes}</div>
-                    <div className="mb-1 text-body-secondary">{movie.rating} ⭐</div>
+                    <div className="mb-1 text-body-secondary">{movie.release_date}</div>
+                    <div className="mb-1 text-body-secondary">{formatDuration(movie.duration_in_minutes)}</div>
+                    <div className="mb-1 text-body-secondary">{formatRating(movie.rating)}</div>
                     <a href="/movies/matrix" className="icon-link gap-1 icon-link-hover stretched-link">
                         Continue reading
                     </a>
