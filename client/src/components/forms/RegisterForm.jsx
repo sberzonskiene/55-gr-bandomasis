@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router";
 import { useState } from "react";
+import { SERVER_ADDRESS } from "../../env";
 
 export function RegisterForm() {
     const [username, setUsername] = useState('');
@@ -24,7 +25,7 @@ export function RegisterForm() {
         setPasswordErr('');
         setTosErr('');
 
-        fetch('http://localhost:5519/api/register', {
+        fetch(SERVER_ADDRESS + 'api/register', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
