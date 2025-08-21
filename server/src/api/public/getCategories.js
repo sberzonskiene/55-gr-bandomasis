@@ -7,7 +7,8 @@ export async function getPublicCategories(req, res) {
             (
                 SELECT COUNT(*)
                 FROM movies
-                WHERE category_id = categories.id
+                WHERE category_id = categories.id AND status_id = (
+                    SELECT id FROM general_status WHERE name = "published"
             ) AS moviesCount
             FROM categories
             WHERE status_id = (

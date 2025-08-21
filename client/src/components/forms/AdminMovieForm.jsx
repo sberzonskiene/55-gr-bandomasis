@@ -1,10 +1,14 @@
 import { useContext, useState } from 'react';
+import { useNavigate } from 'react-router';
 import defaultImg from '../../assets/default.png';
 import { CategoriesContext } from '../../context/categories/CategoriesContext';
+import { MoviesContext } from '../../context/movies/MoviesContext.js';
 import { SERVER_ADDRESS } from '../../env';
 
 export function AdminMovieForm({ movie }) {
     const { adminCategories } = useContext(CategoriesContext);
+    const { updatePublicMovies, updateAdminMovies } = useContext(MoviesContext);
+    const navigate = useNavigate();
 
     const [generalErr, setGeneralErr] = useState('');
 
@@ -37,11 +41,16 @@ export function AdminMovieForm({ movie }) {
     function handleMainFormSubmit(e) {
         e.preventDefault();
 
+        setImgErr('');
+        setTitleErr('');
+        setUrlErr('');
+        setDescriptionErr('');
+
         const data = {
             title,
             url,
             duration,
-            category: categoryId,
+            category: +categoryId,
             status,
             rating,
         };
@@ -83,6 +92,10 @@ export function AdminMovieForm({ movie }) {
                             setImgErr(data.msg.img);
                         }
                     }
+                } else {
+                    updatePublicMovies();
+                    updateAdminMovies();
+                    navigate('/admin/movies');
                 }
             })
             .catch(console.error);

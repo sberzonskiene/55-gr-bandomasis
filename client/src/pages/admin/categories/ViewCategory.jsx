@@ -4,9 +4,12 @@ import { Alert } from "../../../components/Alert";
 import { useContext } from 'react';
 import { CategoriesContext } from '../../../context/categories/CategoriesContext';
 import { AdminViewCategoryTable } from '../../../components/AdminViewCategoryTable';
+import { AdminMoviesTable } from '../../../components/admin-movies-table/AdminMoviesTable';
+import { MoviesContext } from '../../../context/movies/MoviesContext';
 
 export function AdminViewCategoryPage() {
     const { getAdminCategoryByUrlSlug } = useContext(CategoriesContext);
+    const { adminMovies } = useContext(MoviesContext);
     const { category } = useParams();
 
     const categoryData = getAdminCategoryByUrlSlug(category);
@@ -20,8 +23,13 @@ export function AdminViewCategoryPage() {
                     <div className="col-12 col-md-9 mt-5">
                         {
                             categoryData
-                                ? <AdminViewCategoryTable data={categoryData} />
-                                : <Alert text='Norima kategorija nerasta, todėl jos peržiūrėti yra neįmanoma.' />
+                                ? (
+                                    <> 
+                                        <AdminViewCategoryTable data={categoryData} />
+                                        <AdminMoviesTable movies={adminMovies.filter(m => m.category_id === categoryData.id)} />
+                                    </>
+                                ) 
+                                : <Alert text='Norima kategorija nerasta, todėl jos peržiūrėti yra neįmanoma.' />   
                         }
                     </div>
                 </div>
