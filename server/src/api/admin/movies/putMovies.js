@@ -21,9 +21,9 @@ export async function putAdminMovies(req, res) {
         status: 'nonEmptyString',
         rating: 'numberFloat',
     }, {
+        img: 'nonEmptyString',
         description: 'nonEmptyString',
         releaseDate: 'nonEmptyString',
-        img: 'nonEmptyString',   
     });
 
     if (err) {
@@ -49,7 +49,7 @@ export async function putAdminMovies(req, res) {
     if (!rating) {
         rating = 0;
     }
-     if (!img) {
+    if (!img) {
         img = '';
     }
 

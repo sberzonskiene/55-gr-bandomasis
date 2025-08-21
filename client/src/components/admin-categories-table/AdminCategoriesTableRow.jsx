@@ -5,16 +5,15 @@ import { SERVER_ADDRESS } from '../../env';
 
 export function AdminCategoriesTableRow({ category }) {
     const { deletePublicCategory, deleteAdminCategory } = useContext(CategoriesContext);
-    const urlSlug = category.url_slug;
 
     function handleDeleteClick() {
-        fetch(SERVER_ADDRESS +'/api/admin/categories/' + category.url_slug, {
+        fetch(SERVER_ADDRESS + '/api/admin/categories/' + category.url_slug, {
             method: 'DELETE',
             credentials: 'include',
         })
             .then(res => res.json())
-            .then(category => {
-                if (category.status === 'success') {
+            .then(data => {
+                if (data.status === 'success') {
                     deletePublicCategory(category.url_slug);
                     deleteAdminCategory(category.url_slug);
                 }
@@ -26,7 +25,7 @@ export function AdminCategoriesTableRow({ category }) {
         <tr>
             <th scope="row">{category.id}</th>
             <td><Link to={"/admin/categories/" + category.url_slug}>{category.title}</Link></td>
-            <td>{urlSlug}</td>
+            <td>{category.url_slug}</td>
             <td>{category.description}</td>
             <td>{category.moviesCount}</td>
             <td>

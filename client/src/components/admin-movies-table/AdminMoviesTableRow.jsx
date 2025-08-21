@@ -66,6 +66,6 @@ export function AdminMoviesTableRow({ movie }) {
                     <button onClick={handleDeleteClick} className="btn btn-danger btn-sm">Delete</button>
                 </div>
             </td>
-        </tr>
+        </tr >
     );
 }

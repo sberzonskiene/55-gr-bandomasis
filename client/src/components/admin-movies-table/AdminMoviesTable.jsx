@@ -1,6 +1,6 @@
-import { AdminMoviesTableRow } from './AdminMoviesTableRow'
+import { AdminMoviesTableRow } from './AdminMoviesTableRow';
 
-export function AdminMoviesTable({movies}) {
+export function AdminMoviesTable({ movies }) {
     return (
         <div className="container mt-5">
             <div className="row">
@@ -20,7 +20,7 @@ export function AdminMoviesTable({movies}) {
                                 </tr>
                             </thead>
                             <tbody>
-                                {movies.map(movie => <AdminMoviesTableRow key ={movie.id} movie={movie} />)}
+                                {movies.map(movie => <AdminMoviesTableRow key={movie.id} movie={movie} />)}
                             </tbody>
                         </table>
                     </div>

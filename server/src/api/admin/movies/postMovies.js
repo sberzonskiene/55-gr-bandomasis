@@ -3,7 +3,7 @@ import { IsValid } from "../../../lib/IsValid.js";
 
 export async function postAdminMovies(req, res) {
     const [err, msg] = IsValid.fields(req.body, {
-         title: 'nonEmptyString',
+        title: 'nonEmptyString',
         url: 'url',
         duration: 'numberInteger',
         category: 'numberInteger',
@@ -51,8 +51,8 @@ export async function postAdminMovies(req, res) {
             return res.status(400).json({
                 status: 'error',
                 msg: {
-                    url: 'Tokia filmo nuoroda jau užimta',
-                }
+                    url: 'Tokia filmo nuoroda jau uzimta',
+                },
             });
         }
     } catch (error) {

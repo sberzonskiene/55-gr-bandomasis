@@ -24,12 +24,12 @@ export function AdminViewCategoryPage() {
                         {
                             categoryData
                                 ? (
-                                    <> 
+                                    <>
                                         <AdminViewCategoryTable data={categoryData} />
                                         <AdminMoviesTable movies={adminMovies.filter(m => m.category_id === categoryData.id)} />
                                     </>
-                                ) 
-                                : <Alert text='Norima kategorija nerasta, todėl jos peržiūrėti yra neįmanoma.' />   
+                                )
+                                : <Alert text='Norima kategorija nerasta, todel jos perziureti yra neimanomas.' />
                         }
                     </div>
                 </div>

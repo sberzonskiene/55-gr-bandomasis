@@ -2,8 +2,8 @@ import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router';
 import defaultImg from '../../assets/default.png';
 import { CategoriesContext } from '../../context/categories/CategoriesContext';
+import { SERVER_ADDRESS } from '../../env.js';
 import { MoviesContext } from '../../context/movies/MoviesContext.js';
-import { SERVER_ADDRESS } from '../../env';
 
 export function AdminMovieForm({ api, method, movie }) {
     const { adminCategories } = useContext(CategoriesContext);
@@ -101,14 +101,14 @@ export function AdminMovieForm({ api, method, movie }) {
             .catch(console.error);
     }
 
-    // TODO: reik <alert> elemento, bendrinems klaidoms rodyti
+    // TODO: reik <alert> elemento, bendrinems klaidos rodyti
 
     return (
         <>
             <form onSubmit={handleImageFormSubmit} className="col-12 col-md-9 col-lg-6 mt-5">
                 <img id="img_preview" className="d-block w-100 object-fit-contain"
                     style={{ height: '20rem', backgroundColor: '#eee' }}
-                    src={img ? (SERVER_ADDRESS + '/img/movies' + img) : defaultImg} alt="Movie thumbnail" />
+                    src={img ? (SERVER_ADDRESS + '/img/movies/' + img) : defaultImg} alt="Movie thumbnail" />
                 <p id="img_path">{img}</p>
                 <input type="file" className={"form-control" + (imgErr ? ' is-invalid' : '')} id="img" name="img" />
                 <div className="invalid-feedback">{imgErr}</div>

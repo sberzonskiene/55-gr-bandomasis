@@ -21,11 +21,11 @@ export function AdminEditMoviePage() {
                     {movieData
                         ? <AdminMovieForm
                             api={SERVER_ADDRESS + '/api/admin/movies/' + movieData.url_slug}
-                            method="PUT" 
+                            method="PUT"
                             movie={movieData} />
                         : (
                             <div className="col-12 col-md-9 mt-5">
-                                <Alert text='Norimas filmas nerastas, todėl redagavimas yra neįmanomas.' />
+                                <Alert text='Norimas filmas nerasta, todel redagavimas yra neimanomas.' />
                             </div>
                         )}
                 </div>
