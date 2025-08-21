@@ -1,19 +1,15 @@
+import { useParams } from "react-router";
 import { AdminPageTitle } from "../../../components/AdminPageTitle";
 import { Alert } from "../../../components/Alert";
 import { AdminMovieForm } from "../../../components/forms/AdminMovieForm";
+import { useContext } from "react";
+import { MoviesContext } from "../../../context/movies/MoviesContext";
 
 export function AdminEditMoviePage() {
-    const movie = {
-        img: '/vite.svg',
-        title: 'Action',
-        url: 'action',
-        description: 'Very action, much movie',
-        duration: 122,
-        categoryId: 1,
-        releaseDate: '2025-06-07',
-        rating: 46,
-        status: 'published',
-    };
+    const { getAdminMovieByUrlSlug } = useContext(MoviesContext);
+    const { movie } = useParams();
+
+    const movieData = getAdminMovieByUrlSlug(movie);
 
     return (
         <main>
@@ -21,10 +17,13 @@ export function AdminEditMoviePage() {
 
             <div className="container">
                 <div className="row">
-                    <div className="col-12 col-md-9 mt-5">
-                        <Alert text='Norimas filmas nerasta, todel redagavimas yra neimanomas.' />
-                    </div>
-                    <AdminMovieForm movie={movie} />
+                    {movieData
+                        ? <AdminMovieForm movie={movieData} />
+                        : (
+                            <div className="col-12 col-md-9 mt-5">
+                                <Alert text='Norimas filmas nerastas, todėl redagavimas yra neįmanomas.' />
+                            </div>
+                        )}
                 </div>
             </div>
         </main>

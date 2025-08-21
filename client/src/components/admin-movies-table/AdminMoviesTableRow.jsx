@@ -36,7 +36,11 @@ export function AdminMoviesTableRow({ movie }) {
             <th scope="row">{movie.id}</th>
             <td><img src={imgPath} alt="Movie thumbnail" style={{ maxHeight: '4rem' }} /></td>
             <td><Link to={"/admin/movies/" + movie.url_slug}>{movie.title}</Link></td>
-            <td><span className="badge text-bg-success">Provided</span></td>
+            <td>{
+                movie.description
+                    ? <span className="badge text-bg-success">Provided</span>
+                    : <span className="badge text-bg-warning">Empty</span>
+            }</td>
             <td>{
                 movie.duration_in_minutes
                     ? formatDuration(movie.duration_in_minutes)

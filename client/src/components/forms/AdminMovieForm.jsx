@@ -18,18 +18,18 @@ export function AdminMovieForm({ movie }) {
     const [title, setTitle] = useState(movie?.title ?? '');
     const [titleErr, setTitleErr] = useState('');
 
-    const [url, setUrl] = useState(movie?.url ?? '');
+    const [url, setUrl] = useState(movie?.url_slug ?? '');
     const [urlErr, setUrlErr] = useState('');
 
     const [description, setDescription] = useState(movie?.description ?? '');
     const [descriptionErr, setDescriptionErr] = useState('');
 
-    const [hours, setHours] = useState(movie?.duration ? (movie.duration - movie.duration % 60) / 60 : 0);
-    const [minutes, setMinutes] = useState(movie?.duration ? movie.duration % 60 : 0);
-    const [categoryId, setCategoryId] = useState(movie?.categoryId ?? 0);
-    const [releaseDate, setReleaseDate] = useState(movie?.releaseDate ?? '');
+    const [hours, setHours] = useState(movie?.duration_in_minutes ? (movie.duration_in_minutes - movie.duration_in_minutes % 60) / 60 : 0);
+    const [minutes, setMinutes] = useState(movie?.duration_in_minutes ? movie.duration_in_minutes % 60 : 0);
+    const [categoryId, setCategoryId] = useState(movie?.category_id ?? 0);
+    const [releaseDate, setReleaseDate] = useState(movie?.release_date ? movie.release_date.slice(0, movie.release_date.indexOf('T')) : '');
     const [rating, setRating] = useState(movie?.rating ?? 50);
-    const [status, setStatus] = useState(movie?.status ?? 'draft');
+    const [status, setStatus] = useState(movie?.status_name ?? 'draft');
 
     const duration = hours * 60 + minutes;
 
@@ -108,7 +108,7 @@ export function AdminMovieForm({ movie }) {
             <form onSubmit={handleImageFormSubmit} className="col-12 col-md-9 col-lg-6 mt-5">
                 <img id="img_preview" className="d-block w-100 object-fit-contain"
                     style={{ height: '20rem', backgroundColor: '#eee' }}
-                    src={img ? img : defaultImg} alt="Movie thumbnail" />
+                    src={img ? (SERVER_ADDRESS + '/img/movies' + img) : defaultImg} alt="Movie thumbnail" />
                 <p id="img_path">{img}</p>
                 <input type="file" className={"form-control" + (imgErr ? ' is-invalid' : '')} id="img" name="img" />
                 <div className="invalid-feedback">{imgErr}</div>
