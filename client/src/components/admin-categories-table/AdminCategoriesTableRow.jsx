@@ -3,20 +3,20 @@ import { Link } from 'react-router';
 import { CategoriesContext } from '../../context/categories/CategoriesContext';
 import { SERVER_ADDRESS } from '../../env';
 
-export function AdminCategoriesTableRow({ data }) {
+export function AdminCategoriesTableRow({ category }) {
     const { deletePublicCategory, deleteAdminCategory } = useContext(CategoriesContext);
-    const urlSlug = data.url_slug;
+    const urlSlug = category.url_slug;
 
     function handleDeleteClick() {
-        fetch(SERVER_ADDRESS + urlSlug, {
+        fetch(SERVER_ADDRESS +'/api/admin/categories/' + category.url_slug, {
             method: 'DELETE',
             credentials: 'include',
         })
             .then(res => res.json())
-            .then(data => {
-                if (data.status === 'success') {
-                    deletePublicCategory(urlSlug);
-                    deleteAdminCategory(urlSlug);
+            .then(category => {
+                if (category.status === 'success') {
+                    deletePublicCategory(category.url_slug);
+                    deleteAdminCategory(category.url_slug);
                 }
             })
             .catch(console.error);
@@ -24,21 +24,21 @@ export function AdminCategoriesTableRow({ data }) {
 
     return (
         <tr>
-            <th scope="row">{data.id}</th>
-            <td><Link to={"/admin/categories/" + urlSlug}>{data.title}</Link></td>
+            <th scope="row">{category.id}</th>
+            <td><Link to={"/admin/categories/" + category.url_slug}>{category.title}</Link></td>
             <td>{urlSlug}</td>
-            <td>{data.description}</td>
-            <td>{data.moviesCount}</td>
+            <td>{category.description}</td>
+            <td>{category.moviesCount}</td>
             <td>
                 {
-                    data.status_name === 'published'
+                    category.status_name === 'published'
                         ? <span className="badge text-bg-success">Published</span>
                         : <span className="badge text-bg-warning">Draft</span>
                 }
 
             </td>
             <td className="d-flex gap-3">
-                <Link className="btn btn-primary btn-sm" to={`/admin/categories/${urlSlug}/edit`}>Edit</Link>
+                <Link className="btn btn-primary btn-sm" to={`/admin/categories/${category.url_slug}/edit`}>Edit</Link>
                 <button onClick={handleDeleteClick} className="btn btn-danger btn-sm">Delete</button>
             </td>
         </tr>

@@ -20,7 +20,7 @@ export function AdminMoviesTable({movies}) {
                                 </tr>
                             </thead>
                             <tbody>
-                                {movies.map(movie => <AdminMoviesTableRow key ={movie.id} data={movie} />)}
+                                {movies.map(movie => <AdminMoviesTableRow key ={movie.id} movie={movie} />)}
                             </tbody>
                         </table>
                     </div>
