@@ -70,7 +70,7 @@ export function AdminCategoryForm({ api, method, category }) {
                     <label className="form-check-label" htmlFor="status_draft">Draft</label>
                 </div>
             </div>
-            <button type="submit" className="btn btn-primary">Create</button>
+            <button type="submit" className="btn btn-primary">{method === 'POST' ? 'Create' : 'Update'}</button>
         </form>
     );
 }

@@ -19,7 +19,7 @@ export function AdminCategoriesTable({ list }) {
                                 </tr>
                             </thead>
                             <tbody>
-                                {list.map(item => <AdminCategoriesTableRow key={item.id} data={item} />)}
+                                {list.map(item => <AdminCategoriesTableRow key={item.id} category={item} />)}
                             </tbody>
                         </table>
                     </div>

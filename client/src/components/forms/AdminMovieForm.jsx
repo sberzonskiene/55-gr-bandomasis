@@ -5,7 +5,7 @@ import { CategoriesContext } from '../../context/categories/CategoriesContext';
 import { MoviesContext } from '../../context/movies/MoviesContext.js';
 import { SERVER_ADDRESS } from '../../env';
 
-export function AdminMovieForm({ movie }) {
+export function AdminMovieForm({ api, method, movie }) {
     const { adminCategories } = useContext(CategoriesContext);
     const { updatePublicMovies, updateAdminMovies } = useContext(MoviesContext);
     const navigate = useNavigate();
@@ -65,8 +65,8 @@ export function AdminMovieForm({ movie }) {
             data.releaseDate = releaseDate;
         }
 
-        fetch(SERVER_ADDRESS + '/api/admin/movies', {
-            method: 'POST',
+        fetch(api, {
+            method: method,
             headers: {
                 'Content-Type': 'application/json',
             },
@@ -176,7 +176,7 @@ export function AdminMovieForm({ movie }) {
                         <label className="form-check-label" htmlFor="status_draft">Draft</label>
                     </div>
                 </div>
-                <button type="submit" className="btn btn-primary">Create</button>
+                <button type="submit" className="btn btn-primary">{method === 'POST' ? 'Create' : 'Update'}</button>
             </form>
         </>
     );
