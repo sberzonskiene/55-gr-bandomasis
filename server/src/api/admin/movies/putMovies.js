@@ -19,11 +19,11 @@ export async function putAdminMovies(req, res) {
         duration: 'numberInteger',
         category: 'numberInteger',
         status: 'nonEmptyString',
-        img: 'nonEmptyString',
+        rating: 'numberFloat',
     }, {
         description: 'nonEmptyString',
         releaseDate: 'nonEmptyString',
-        rating: 'numberFloat',
+        img: 'nonEmptyString',   
     });
 
     if (err) {
@@ -34,9 +34,8 @@ export async function putAdminMovies(req, res) {
     }
 
     const { original_url } = req.params;
-    const { title, url, status, duration, img } = req.body;
-    let { category, description, releaseDate, rating } = req.body;
-    const imgPath = img.split('/').at(-1);
+    const { title, url, status, duration, rating } = req.body;
+    let { category, description, releaseDate, img } = req.body;
 
     if (category === 0) {
         category = null;
@@ -50,6 +49,11 @@ export async function putAdminMovies(req, res) {
     if (!rating) {
         rating = 0;
     }
+     if (!img) {
+        img = '';
+    }
+
+    const imgPath = img.split('/').at(-1);
 
     try {
         const sql = `
@@ -59,7 +63,7 @@ export async function putAdminMovies(req, res) {
             ),  description = ?, release_date = ?, duration_in_minutes = ?, rating = ?
             WHERE url_slug = ?`;
         const [response] = await connection.execute(sql,
-            [imgPath, title, url, category, status, description, releaseDate, duration, rating * 10, original_url]);
+            [imgPath, title, url, category, status, description, releaseDate, duration, rating, original_url]);
 
         if (response.affectedRows !== 1) {
             return res.status(500).json({
