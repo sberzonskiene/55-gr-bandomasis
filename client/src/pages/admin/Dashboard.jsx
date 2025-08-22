@@ -6,6 +6,7 @@ export function AdminDasboardPage() {
 
     return (
         <main>
+            <h3>Welcome to dashboard!!!</h3>
             <p>Email: {email}</p>
         </main>
     );
