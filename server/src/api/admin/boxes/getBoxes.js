@@ -7,7 +7,7 @@ export async function getAdminBoxes(req, res) {
             FROM boxes
             INNER JOIN general_status
                 ON boxes.status_id = general_status.id;`;
-        const [movies] = await connection.execute(sql);
+        const [boxes] = await connection.execute(sql);
 
         return res.json({
             status: 'success',

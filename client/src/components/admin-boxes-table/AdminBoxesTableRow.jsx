@@ -30,7 +30,7 @@ export function AdminBoxesTableRow({ box }) {
     return (
         <tr>
             <th scope="row">{box.id}</th>
-            <td><Link to={"/admin/movies/" + box.url_slug}>{box.title}</Link></td>
+            <td><Link to={"/admin/boxes/" + box.url_slug}>{box.title}</Link></td>
             <td>{
                 box.description
                     ? <span className="badge text-bg-success">Provided</span>

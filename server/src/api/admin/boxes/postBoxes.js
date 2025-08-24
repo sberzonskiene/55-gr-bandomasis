@@ -52,7 +52,7 @@ export async function postAdminBoxes(req, res) {
 
     try {
         const sql = `
-            INSERT INTO movies
+            INSERT INTO boxes
                 (title, url_slug, container_id, status_id, perishable, neto)
             VALUES (?, ?, ?, ?, ?, ?,
                 (SELECT id FROM general_status WHERE name = ?),

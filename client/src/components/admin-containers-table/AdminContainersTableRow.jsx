@@ -27,7 +27,7 @@ export function AdminContainersTableRow({ container }) {
             <td><Link to={"/admin/containers/" + container.url_slug}>{container.title}</Link></td>
             <td>{container.url_slug}</td>
             <td>{container.description}</td>
-            <td>{container.moviesCount}</td>
+            <td>{container.boxesCount}</td>
             <td>
                 {
                     container.status_name === 'published'
