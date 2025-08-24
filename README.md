@@ -1,4 +1,4 @@
-# Movies - The Final Project 
+# Bandomasis Project 
 website design project
 
 # 🌟 About
@@ -27,7 +27,7 @@ Would like to run this project locally? Open terminal and follow these steps:
 
 1. Clone the repo   
 
-    git clone https://github.com/sberzonskiene/55-gr-final
+    git clone https://github.com/sberzonskiene/55-gr-bandomasis egzaminas
 
 2. Install main NPM packages
 
