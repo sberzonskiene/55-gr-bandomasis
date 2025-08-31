@@ -9,10 +9,10 @@ export function Footer() {
                     <Link to="/" className="nav-link px-2 text-body-secondary">Home</Link>
                 </li>
                 <li className="nav-item">
-                    <Link to="/movies" className="nav-link px-2 text-body-secondary">Movies</Link>
+                    <Link to="/boxes" className="nav-link px-2 text-body-secondary">Boxes</Link>
                 </li>
                 <li className="nav-item">
-                    <Link to="/categories" className="nav-link px-2 text-body-secondary">Categories</Link>
+                    <Link to="/containers" className="nav-link px-2 text-body-secondary">Containers</Link>
                 </li>
             </ul>
         </footer>

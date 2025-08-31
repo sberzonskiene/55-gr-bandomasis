@@ -17,9 +17,7 @@ export function LoginForm() {
 
     function handleFormSubmit(e) {
         e.preventDefault();
-        // login('chuck@norris.lt', 1);
-        // navigate('/admin');
-
+        
         setFormErr('');
         setUsernameOrEmailErr('');
         setPasswordErr('');

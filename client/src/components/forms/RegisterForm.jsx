@@ -25,7 +25,7 @@ export function RegisterForm() {
         setPasswordErr('');
         setTosErr('');
 
-        fetch(SERVER_ADDRESS + 'api/register', {
+        fetch(SERVER_ADDRESS + '/api/register', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -57,10 +57,9 @@ export function RegisterForm() {
                 }
             })
             .catch(console.error);
-
     }
 
- return (
+    return (
         <form onSubmit={handleFormSubmit} className="col-12 col-sm-10 col-md-8 col-lg-6 col-xl-4">
             <div className="mb-4">
                 <label htmlFor="username" className="form-label">Username</label>
