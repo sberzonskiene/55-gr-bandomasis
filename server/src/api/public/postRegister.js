@@ -8,7 +8,6 @@ export async function postPublicRegister(req, res) {
         username: 'username',
         email: 'email',
         password: 'password',
-        tos: 'tos',
     });
 
     if (err) {

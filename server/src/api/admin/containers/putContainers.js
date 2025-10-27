@@ -14,7 +14,7 @@ export async function putAdminContainers(req, res) {
     }
 
     const [err, msg] = IsValid.fields(req.body, {
-        title: 'nonEmptyString',
+        number: 'numberFloat',
         url: 'nonEmptyString',
         status: 'nonEmptyString',
         size: 'nonEmptyString',
@@ -28,16 +28,16 @@ export async function putAdminContainers(req, res) {
     }
 
     const { original_url } = req.params;
-    const { title, url, status, size } = req.body;
+    const { number, url, status, size } = req.body;
 
     try {
         const sql = `
             UPDATE containers
-            SET title = ?, url_slug = ?, size = ?, status_id = (
+            SET number = ?, url_slug = ?, size = ?, status_id = (
                 SELECT id FROM general_status WHERE name = ?
             )
             WHERE url_slug = ?`;
-        const [response] = await connection.execute(sql, [title, url, size, status, original_url]);
+        const [response] = await connection.execute(sql, [number, url, size, status, original_url]);
 
         if (response.affectedRows !== 1) {
             return res.status(500).json({

@@ -10,10 +10,12 @@ export function AdminBoxesTable({ boxes }) {
                             <thead>
                                 <tr>
                                     <th scope="col">#</th>
+                                    <th scope="col">Thumbnail</th>
                                     <th scope="col">Title</th>
                                     <th scope="col">Neto</th>
-                                    <th scope="col">Perishable</th>
                                     <th scope="col">Container</th>
+                                    <th scope="col">Flammable</th>
+                                    <th scope="col">Perishable</th>
                                     <th scope="col">Status</th>
                                     <th scope="col">Actions</th>
                                 </tr>

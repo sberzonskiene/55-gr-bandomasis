@@ -23,18 +23,26 @@ export function AdminViewBoxTable({ boxData }) {
                     <td>{boxData.neto}</td>
                 </tr>
                 <tr className="mb-3">
-                    <td>Perishable</td>
+                    <td>Flammable</td>
                     <td>{
-                        boxData.perishable
-                            ?<span className="badge text-bg-danger">Perichable</span>
-                            : <span class="badge text-bg-warning">Not perishable</span>
+                        boxData.type_f_id === 1
+                            ?<span className="badge text-bg-danger">Yes</span>
+                            : <span className="badge text-bg-warning">No</span>
                     }</td>
                 </tr>
                 <tr className="mb-3">
-                    <td>container</td>
+                    <td>Perishable</td>
+                    <td>{
+                        boxData.type_p_id === 1
+                            ?<span className="badge text-bg-danger">Yes</span>
+                            : <span className="badge text-bg-warning">No</span>
+                    }</td>
+                </tr>
+                <tr className="mb-3">
+                    <td>Container</td>
                     <td>{
                         containerData
-                            ? containerData.title
+                            ? containerData.number + containerData.size
                             : <span className="badge text-bg-warning">Not selected</span>
                     }</td>
                 </tr>

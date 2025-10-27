@@ -5,10 +5,13 @@ export async function postAdminBoxes(req, res) {
     const [err, msg] = IsValid.fields(req.body, {
         title: 'nonEmptyString',
         url: 'url',
+        neto: 'numberFloat',
         container: 'numberInteger',
-        neto: 'numberInteger',
-        perishable: 'nonEmptyString',
-        status: 'nonEmptyString',
+        typeF: 'nonEmptyString',
+        typeP: 'nonEmptyString',
+        status: 'nonEmptyString',   
+    },  {
+        img: 'nonEmptyString',
     });
 
     if (err) {
@@ -18,17 +21,18 @@ export async function postAdminBoxes(req, res) {
         });
     }
 
-    const { title, url, status,  container, perishable, neto} = req.body;
+    const { title, url, neto, container, typeF, typeP, status} = req.body;
+    let { img } = req.body;
 
-    if (container === 0) {
-        container = null;
-    }
-    if (!perishable) {
-        perishable = '';
-    }
+
     if (!neto) {
         neto = 0;
     }
+     if (!img) {
+        img = '';
+    }
+
+    const imgPath = img.split('/').at(-1);
     
     try {
         const sql = `SELECT * FROM boxes WHERE url_slug = ?;`;
@@ -53,12 +57,14 @@ export async function postAdminBoxes(req, res) {
     try {
         const sql = `
             INSERT INTO boxes
-                (title, url_slug, container_id, status_id, perishable, neto)
-            VALUES (?, ?, ?, ?, ?, ?,
-                (SELECT id FROM general_status WHERE name = ?),
-                ?, ?, ?, ?, ?, ?);`;
+                (img, title, url_slug, neto, container_id, type_f_id, type_p_id, status_id)
+            VALUES (?, ?, ?, ?, ?, 
+                (SELECT id FROM general_type WHERE name = ?),
+                (SELECT id FROM general_type WHERE name = ?),
+                (SELECT id FROM general_status WHERE name = ?));`;
+
         const [response] = await connection.execute(sql,
-            [title, url, status]
+            [imgPath, title, url, neto, container, typeF, typeP, status]
         );
 
         if (response.affectedRows !== 1) {

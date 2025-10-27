@@ -13,7 +13,7 @@ export async function getAdminContainers(req, res) {
             FROM containers
             INNER JOIN general_status
                 ON containers.status_id = general_status.id;`;
-        const [categories] = await connection.execute(sql);
+        const [containers] = await connection.execute(sql);
 
         return res.json({
             status: 'success',

@@ -3,15 +3,15 @@ export function AdminViewContainerTable({ data }) {
         <table className="table table-bordered border-primary">
             <tbody>
                 <tr className="mb-3">
-                    <td>Id</td>
+                    <td>#</td>
                     <td>{data.id}</td>
                 </tr>
                 <tr className="mb-3">
-                    <td>Title</td>
-                    <td>{data.title}</td>
+                    <td>ID number</td>
+                    <td>{data.number}</td>
                 </tr>
                 <tr className="mb-3">
-                    <td>Url slug</td>
+                    <td>Url</td>
                     <td>{data.url_slug}</td>
                 </tr>
                 <tr className="mb-3">

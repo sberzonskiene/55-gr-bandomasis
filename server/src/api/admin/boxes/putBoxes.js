@@ -16,10 +16,14 @@ export async function putAdminBoxes(req, res) {
     const [err, msg] = IsValid.fields(req.body, {
         title: 'nonEmptyString',
         url: 'url',
+        neto: 'numberFloat',
         container: 'numberInteger',
-        neto: 'numberInteger',
-        perishable: 'nonEmptyString',
+        typeF: 'nonEmptyString',
+        typeP: 'nonEmptyString',
         status: 'nonEmptyString',   
+    },  {
+        img: 'nonEmptyString',
+       
     });
 
     if (err) {
@@ -30,28 +34,30 @@ export async function putAdminBoxes(req, res) {
     }
 
     const { original_url } = req.params;
-    const { title, url, status, container, perishable, neto } = req.body;
-    let { } = req.body;
+    const { title, url, status, typeF, typeP, neto } = req.body;
+    let { container, img } = req.body;
 
     if (container === 0) {
         container = null;
     }
-    if (!perishable) {
-        perishable = '';
-    }
-    if (!neto) {
+     if (!neto) {
         neto = 0;
     }
+    if (!img) {
+        img = '';
+    }
+
+    const imgPath = img.split('/').at(-1);
     
     try {
         const sql = `
             UPDATE boxes
-            SET title = ?, url_slug = ?, container_id = ?, status_id = (
+            SET img = ?, title = ?, url_slug = ?, container_id = ?, type_f_id = ?, type_p_id = ?, status_id = ? (
                 SELECT id FROM general_status WHERE name = ?
-            ),  perishable = ?, neto = ?
+            ), neto = ?
             WHERE url_slug = ?`;
         const [response] = await connection.execute(sql,
-            [title, url, container, status, neto, original_url]);
+            [imgPath, title, url, container, status, neto, typeF, typeP, original_url]);
 
         if (response.affectedRows !== 1) {
             return res.status(500).json({

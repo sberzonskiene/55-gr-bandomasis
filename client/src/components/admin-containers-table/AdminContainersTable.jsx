@@ -9,10 +9,11 @@ export function AdminContainersTable({ list }) {
                         <table className="table table-striped">
                             <thead>
                                 <tr>
-                                    <th scope="col">Id</th>
-                                    <th scope="col">Title</th>
-                                    <th scope="col">Size</th>
+                                    <th scope="col">#</th>
+                                    <th scope="col">ID number</th>
                                     <th scope="col">Url</th>
+                                    <th scope="col">Size</th>
+                                    <th scope="col">Boxes count</th>
                                     <th scope="col">Status</th>
                                     <th scope="col">Actions</th>
                                 </tr>

@@ -36,7 +36,7 @@ export function ContainerInnerPage() {
                 <div className="row">
                     {
                         boxesData.length
-                            ? boxesData.map((box, index) => <MovieCard key={index} box={box} />)
+                            ? boxesData.map((box, index) => <BoxCard key={index} box={box} />)
                             : <div className='col-12 alert alert-warning'>Panašu, jog šiame konteineryje šiuo metu nėra jokių dėžių.</div>
                     }
                 </div>

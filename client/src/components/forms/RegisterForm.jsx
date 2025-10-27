@@ -12,9 +12,6 @@ export function RegisterForm() {
     const [password, setPassword] = useState('');
     const [passwordErr, setPasswordErr] = useState('');
 
-    const [tos, setTos] = useState('');
-    const [tosErr, setTosErr] = useState('');
-
     const navigate = useNavigate();
 
     function handleFormSubmit(e) {
@@ -23,7 +20,6 @@ export function RegisterForm() {
         setUsernameErr('');
         setEmailErr('');
         setPasswordErr('');
-        setTosErr('');
 
         fetch(SERVER_ADDRESS + '/api/register', {
             method: 'POST',
@@ -34,7 +30,6 @@ export function RegisterForm() {
                 username,
                 email,
                 password,
-                tos,
             }),
         })
             .then(res => res.json())
@@ -48,9 +43,6 @@ export function RegisterForm() {
                     }
                     if (data.msg.password) {
                         setPasswordErr(data.msg.password);
-                    }
-                    if (data.msg.tos) {
-                        setTosErr(data.msg.tos);
                     }
                 } else {
                     navigate('/login');
@@ -78,12 +70,6 @@ export function RegisterForm() {
                 <input onChange={e => setPassword(e.target.value)} value={password} id="password" type="password"
                     className={"form-control fs-5" + (passwordErr ? ' is-invalid' : '')} required="" />
                 <div className="invalid-feedback">{passwordErr}</div>
-            </div>
-            <div className="mb-4">
-                <input onChange={e => setTos(tos ? '' : e.target.value)} checked={!!tos}
-                    className={"form-check-input me-2 mt-0" + (tosErr ? ' is-invalid' : '')} style={{ width: '1.5rem', height: '1.5rem' }} type="checkbox" value="agree" id="tos" required="" />
-                <label style={{ lineHeight: '1.5rem' }} htmlFor="tos">Agree to our Terms of Service</label>
-                <div className="invalid-feedback">{tosErr}</div>
             </div>
             <div className="mb-4">
                 <button type="submit" className="btn btn-primary w-100 py-2 fs-5">Register</button>

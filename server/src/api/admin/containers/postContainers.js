@@ -3,7 +3,7 @@ import { IsValid } from "../../../lib/IsValid.js";
 
 export async function postAdminContainers(req, res) {
     const [err, msg] = IsValid.fields(req.body, {
-        title: 'nonEmptyString',
+        number: 'numberFloat',
         url: 'url',
         status: 'nonEmptyString',
         size: 'nonEmptyString',
@@ -16,11 +16,11 @@ export async function postAdminContainers(req, res) {
         });
     }
 
-    const { title, url, status, size } = req.body;
+    const { number, url, status, size } = req.body;
 
     try {
-        const sql = `SELECT * FROM containers WHERE title = ? OR url_slug = ?;`;
-        const [response] = await connection.execute(sql, [title, url]);
+        const sql = `SELECT * FROM containers WHERE number = ? OR url_slug = ?;`;
+        const [response] = await connection.execute(sql, [number, url]);
 
         if (response.length > 0) {
             return res.status(400).json({
@@ -38,11 +38,11 @@ export async function postAdminContainers(req, res) {
 
     try {
         const sql = `
-            INSERT INTO containers (title, url_slug, status_id, size)
+            INSERT INTO containers (number, url_slug, status_id, size)
             VALUES (?, ?, 
                 (SELECT id FROM general_status WHERE name = ?),
                 ?);`;
-        const [response] = await connection.execute(sql, [title, url, status, size]);
+        const [response] = await connection.execute(sql, [number, url, status, size]);
 
         if (response.affectedRows !== 1) {
             return res.status(500).json({

@@ -24,9 +24,9 @@ export function AdminContainersTableRow({ container }) {
     return (
         <tr>
             <th scope="row">{container.id}</th>
-            <td><Link to={"/admin/containers/" + container.url_slug}>{container.title}</Link></td>
+            <td><Link to={"/admin/containers/" + container.url_slug}>{container.number}</Link></td>
             <td>{container.url_slug}</td>
-            <td>{container.description}</td>
+            <td>{container.size}</td>
             <td>{container.boxesCount}</td>
             <td>
                 {
@@ -37,7 +37,7 @@ export function AdminContainersTableRow({ container }) {
 
             </td>
             <td className="d-flex gap-3">
-                <Link className="btn btn-primary btn-sm" to={`/admin/categories/${container.url_slug}/edit`}>Edit</Link>
+                <Link className="btn btn-primary btn-sm" to={`/admin/containers/${container.url_slug}/edit`}>Edit</Link>
                 <button onClick={handleDeleteClick} className="btn btn-danger btn-sm">Delete</button>
             </td>
         </tr>

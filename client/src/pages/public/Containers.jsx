@@ -12,7 +12,7 @@ export function ContainersPage() {
 
             <div className="container px-4" id="featured-3">
                 <div className="row g-4 row-cols-1 row-cols-lg-3">
-                    {publicContainers.map(container => <ContainerCard key={container.title} container={container} />)}
+                    {publicContainers.map(container => <ContainerCard key={container.number} container={container} />)}
                 </div>
             </div>
         </main>

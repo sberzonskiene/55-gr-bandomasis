@@ -37,19 +37,19 @@ export function BoxesContextWrapper(props) {
             .catch(console.error);
     }
 
-    function deletePublicbox(urlSlug) {
+    function deletePublicBox(urlSlug) {
         setPublicBoxes(currentList => currentList.filter(box => box.url_slug !== urlSlug));
     }
 
-    function deleteAdminbox(urlSlug) {
+    function deleteAdminBox(urlSlug) {
         setAdminBoxes(currentList => currentList.filter(box => box.url_slug !== urlSlug));
     }
 
-    function getPublicboxByUrlSlug(urlSlug) {
+    function getPublicBoxByUrlSlug(urlSlug) {
         return publicBoxes.find(box => box.url_slug === urlSlug);
     }
 
-    function getAdminboxByUrlSlug(urlSlug) {
+    function getAdminBoxByUrlSlug(urlSlug) {
         return adminBoxes.find(box => box.url_slug === urlSlug);
     }
 
@@ -66,12 +66,12 @@ export function BoxesContextWrapper(props) {
     const values = {
         publicBoxes,
         adminBoxes,
-        getPublicboxByUrlSlug,
-        getAdminboxByUrlSlug,
+        getPublicBoxByUrlSlug,
+        getAdminBoxByUrlSlug,
         updatePublicBoxes,
         updateAdminBoxes,
-        deletePublicbox,
-        deleteAdminbox,
+        deletePublicBox,
+        deleteAdminBox,
     };
 
     return (

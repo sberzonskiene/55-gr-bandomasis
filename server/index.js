@@ -19,7 +19,10 @@ import { getAdminBoxes } from './src/api/admin/boxes/getBoxes.js';
 import { postAdminBoxes } from './src/api/admin/boxes/postBoxes.js';
 import { putAdminBoxes } from './src/api/admin/boxes/putBoxes.js';
 import { deleteAdminBoxes } from './src/api/admin/boxes/deleteBoxes.js';
-import { PORT } from './src/env.js';
+import { FILE_SIZE_LIMIT, PORT } from './src/env.js';
+import { uploadBoxThumbnailImage } from './src/middleware/uploadBoxThumbnail.js';
+import { postImageUpload } from './src/api/admin/boxes/postImageUpload.js';
+import { formatFileSize } from './src/lib/formatFileSize.js';
 
 const app = express();
 
@@ -44,7 +47,7 @@ app.post('/api/register', isPublic, postPublicRegister);
 app.post('/api/login', isPublic, postPublicLogin);
 
 app.get('/api/containers', getPublicContainers);
-app.get('/api/Boxes', getPublicBoxes);
+app.get('/api/boxes', getPublicBoxes);
 
 app.get('/api/login', isAdmin, getLogin);
 
@@ -57,6 +60,8 @@ app.get('/api/admin/boxes', isAdmin, getAdminBoxes);
 app.post('/api/admin/boxes', isAdmin, postAdminBoxes);
 app.put('/api/admin/boxes/:original_url', isAdmin, putAdminBoxes);
 app.delete('/api/admin/boxes/:url', isAdmin, deleteAdminBoxes);
+
+app.post('/api/admin/upload-image', isAdmin, uploadBoxThumbnailImage.single('img'), postImageUpload);
 
 app.use((err, req, res, next) => {
     console.log(err);

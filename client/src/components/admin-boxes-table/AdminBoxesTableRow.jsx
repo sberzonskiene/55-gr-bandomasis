@@ -3,14 +3,17 @@ import { Link } from 'react-router';
 import { ContainersContext } from '../../context/containers/ContainersContext';
 import { SERVER_ADDRESS } from '../../env';
 import { BoxesContext } from '../../context/boxes/BoxesContext';
+import defaultImg from '../../assets/default.png';
 
 export function AdminBoxesTableRow({ box }) {
     const { adminContainers } = useContext(ContainersContext);
-    const { deletePublicMovie, deleteAdminMovie } = useContext(BoxesContext);
+    const { deletePublicBox, deleteAdminBox } = useContext(BoxesContext);
 
     if (!adminContainers.length) {
         return;
     }
+
+    const imgPath = box.img ? (SERVER_ADDRESS + '/img/boxes/' + box.img) : defaultImg;
 
     function handleDeleteClick() {
         fetch(SERVER_ADDRESS + '/api/admin/boxes/' + box.url_slug, {
@@ -20,8 +23,8 @@ export function AdminBoxesTableRow({ box }) {
             .then(res => res.json())
             .then(data => {
                 if (data.status === 'success') {
-                    deletePublicMovie(box.url_slug);
-                    deleteAdminMovie(box.url_slug);
+                    deletePublicBox(box.url_slug);
+                    deleteAdminBox(box.url_slug);
                 }
             })
             .catch(console.error);
@@ -30,22 +33,28 @@ export function AdminBoxesTableRow({ box }) {
     return (
         <tr>
             <th scope="row">{box.id}</th>
+            <td><img src={imgPath} alt="Box thumbnail" style={{ maxHeight: '4rem' }} /></td>
             <td><Link to={"/admin/boxes/" + box.url_slug}>{box.title}</Link></td>
-            <td>{
-                box.description
-                    ? <span className="badge text-bg-success">Provided</span>
-                    : <span className="badge text-bg-warning">Empty</span>
-            }</td>
-            <td>{
-                box.duration_in_minutes
-                    ? formatDuration(box.duration_in_minutes)
-                    : <span className="badge text-bg-warning">Not selected</span>
-            }</td>
+            <td>{box.neto}</td>
             <td>
                 {
-                    box.category_id
-                        ? adminContainers.find(c => c.id === box.container_id).title
+                    box.container_id
+                        ? adminContainers.find(con => con.id === box.container_id).size
                         : <span className="badge text-bg-warning">Not selected</span>
+                }
+            </td>
+            <td>
+                {
+                    box.type_f_id === 1
+                        ? <span className="badge text-bg-danger">Yes</span>
+                        : <span className="badge text-bg-warning">No</span>
+                }
+            </td>
+            <td>
+                {
+                    box.type_p_id === 1
+                        ? <span className="badge text-bg-danger">Yes</span>
+                        : <span className="badge text-bg-warning">No</span>
                 }
             </td>
             <td>
