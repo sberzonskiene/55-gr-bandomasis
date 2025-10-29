@@ -24,7 +24,6 @@ export async function postAdminBoxes(req, res) {
     const { title, url, neto, container, typeF, typeP, status} = req.body;
     let { img } = req.body;
 
-
     if (!neto) {
         neto = 0;
     }

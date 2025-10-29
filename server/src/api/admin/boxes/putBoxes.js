@@ -34,12 +34,9 @@ export async function putAdminBoxes(req, res) {
     }
 
     const { original_url } = req.params;
-    const { title, url, status, typeF, typeP, neto } = req.body;
-    let { container, img } = req.body;
+    const { title, url, neto, container, typeF, typeP, status} = req.body;
+    let { img } = req.body;
 
-    if (container === 0) {
-        container = null;
-    }
      if (!neto) {
         neto = 0;
     }
@@ -52,12 +49,17 @@ export async function putAdminBoxes(req, res) {
     try {
         const sql = `
             UPDATE boxes
-            SET img = ?, title = ?, url_slug = ?, container_id = ?, type_f_id = ?, type_p_id = ?, status_id = ? (
+            SET img = ?, title = ?, url_slug = ?, container_id = ?, neto = ?, type_f_id = (
+                SELECT id FROM general_type WHERE name = ?
+            ), type_p_id = (
+                SELECT id FROM general_type WHERE name = ?
+            ), status_id = (
                 SELECT id FROM general_status WHERE name = ?
-            ), neto = ?
+            )
             WHERE url_slug = ?`;
+
         const [response] = await connection.execute(sql,
-            [imgPath, title, url, container, status, neto, typeF, typeP, original_url]);
+            [imgPath, title, url, container, neto, typeF, typeP, status, original_url]);
 
         if (response.affectedRows !== 1) {
             return res.status(500).json({

@@ -137,7 +137,7 @@ export function AdminBoxForm({ api, method, box }) {
                 <div className="mb-3">
                     <label htmlFor="neto" className="form-label">Neto</label>
                     <input onChange={e => setNeto(e.target.value * 1000)} value={neto / 1000} type="number"
-                        min="1" max="500" step="0.1" className="form-control" id="neto" />
+                        min="1" step="0.1" className="form-control" id="neto" />
                 </div>
                 <div className="mb-3">
                     <label htmlFor="container" className="form-label">Container</label>
@@ -149,7 +149,7 @@ export function AdminBoxForm({ api, method, box }) {
                 <label className="form-label">Flammable</label>
                     <div className="form-check">
                         <input onChange={() => setTypeF('yes')} checked={typeF === 'yes' ? 'checked' : ''}
-                            type="checkbox" name="" className="form-check-input" id="type_f_yes" />
+                            type="checkbox" name="checkbox" className="form-check-input" id="type_f_yes" />
                         <label className="form-check-label" htmlFor="type_f_yes">Yes</label>
                     </div>
                 <div className="form-check">
