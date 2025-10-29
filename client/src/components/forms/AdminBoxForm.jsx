@@ -143,7 +143,7 @@ export function AdminBoxForm({ api, method, box }) {
                     <label htmlFor="container" className="form-label">Container</label>
                     <select onChange={e => setContainerId(e.target.value)} value={containerId} className="form-select" id="container">
                         <option value={0}>-- choose</option>
-                        {adminContainers.map(con => <option key={con.id} value={con.id}>{con.size}</option>)}
+                        {adminContainers.map(con => <option key={con.id} value={con.id}>{con.size}{con.number}</option>)}
                     </select>
                 </div>
                 <label className="form-label">Flammable</label>

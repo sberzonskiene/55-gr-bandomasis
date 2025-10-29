@@ -64,7 +64,15 @@ app.delete('/api/admin/boxes/:url', isAdmin, deleteAdminBoxes);
 app.post('/api/admin/upload-image', isAdmin, uploadBoxThumbnailImage.single('img'), postImageUpload);
 
 app.use((err, req, res, next) => {
+    if (err.code === 'LIMIT_FILE_SIZE') {
+        return res.status(400).json({
+            status: 'error',
+            msg: `Virsytas failo limitas (${formatFileSize(FILE_SIZE_LIMIT)})`,
+        });
+    }
+
     console.log(err);
+
     return res.status(500).send('Server error');
 });
 

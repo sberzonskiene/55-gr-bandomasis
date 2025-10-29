@@ -1,5 +1,5 @@
 import multer from "multer";
-import { FILE_SIZE_LIMIT, PORT } from "../env.js";
+import { FILE_SIZE_LIMIT } from "../env.js";
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {

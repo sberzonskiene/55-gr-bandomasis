@@ -26,7 +26,7 @@ export function ContainerInnerPage() {
         );
     }
 
-    const boxesData = publicBoxes.filter(b => m.container_id === containerData.id);
+    const boxesData = publicBoxes.filter(b => b.container_id === containerData.id);
 
     return (
         <main className='min-page-height'>

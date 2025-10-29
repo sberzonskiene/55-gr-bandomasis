@@ -20,7 +20,7 @@ export function AdminViewBoxTable({ boxData }) {
                 </tr>
                 <tr className="mb-3">
                     <td>Neto</td>
-                    <td>{boxData.neto}</td>
+                    <td>{boxData.neto} g</td>
                 </tr>
                 <tr className="mb-3">
                     <td>Flammable</td>

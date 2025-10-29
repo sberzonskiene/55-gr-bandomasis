@@ -14,7 +14,7 @@ export function HomePage() {
                         <h1 className="display-5 fw-bold text-body-emphasis lh-1 mb-3">Freight forwarding company</h1>
                         <p className="lead">Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system, extensive prebuilt components, and powerful JavaScript plugins.</p>
                         <div className="d-grid gap-2 d-md-flex justify-content-md-start">
-                            <Link to="/boxes" className="btn btn-primary btn-lg px-4 me-md-2">All boxes</Link>
+                            <Link to="/containers" className="btn btn-primary btn-lg px-4 me-md-2">All containers</Link>
                         </div>
                     </div>
                 </div>

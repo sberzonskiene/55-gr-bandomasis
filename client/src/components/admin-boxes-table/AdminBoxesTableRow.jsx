@@ -39,7 +39,7 @@ export function AdminBoxesTableRow({ box }) {
             <td>
                 {
                     box.container_id
-                        ? adminContainers.find(con => con.id === box.container_id).size
+                        ? adminContainers.find(con => con.id === box.container_id).size + adminContainers.find(con => con.id === box.container_id).number
                         : <span className="badge text-bg-warning">Not selected</span>
                 }
             </td>

@@ -14,6 +14,7 @@ export function AdminContainersTable({ list }) {
                                     <th scope="col">Url</th>
                                     <th scope="col">Size</th>
                                     <th scope="col">Boxes count</th>
+                                    <th scope="col">Boxes neto</th>
                                     <th scope="col">Status</th>
                                     <th scope="col">Actions</th>
                                 </tr>

@@ -18,9 +18,6 @@ export function Header() {
                     <NavLink to='/' className="nav-link px-2">Home</NavLink>
                 </li>
                 <li>
-                    <NavLink to='/boxes' className="nav-link px-2">Boxes</NavLink>
-                </li>
-                <li>
                     <NavLink to='/containers' className="nav-link px-2">Containers</NavLink>
                 </li>
             </ul>
