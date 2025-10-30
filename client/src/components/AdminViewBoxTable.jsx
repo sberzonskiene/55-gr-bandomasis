@@ -42,7 +42,7 @@ export function AdminViewBoxTable({ boxData }) {
                     <td>Container</td>
                     <td>{
                         containerData
-                            ? containerData.number + containerData.size
+                            ? containerData.size + containerData.number
                             : <span className="badge text-bg-warning">Not selected</span>
                     }</td>
                 </tr>
