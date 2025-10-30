@@ -11,6 +11,9 @@ export function Footer() {
                 <li className="nav-item">
                     <Link to="/containers" className="nav-link px-2 text-body-secondary">Containers</Link>
                 </li>
+                <li className="nav-item">
+                    <Link to="/full" className="nav-link px-2 text-body-secondary">Full containers</Link>
+                </li>
             </ul>
         </footer>
     );

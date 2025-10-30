@@ -20,6 +20,9 @@ export function Header() {
                 <li>
                     <NavLink to='/containers' className="nav-link px-2">Containers</NavLink>
                 </li>
+                <li>
+                    <NavLink to='/full' className="nav-link px-2">Full containers</NavLink>
+                </li>
             </ul>
             <div className="col-md-3 text-end">
                 {isLoggedIn ? (

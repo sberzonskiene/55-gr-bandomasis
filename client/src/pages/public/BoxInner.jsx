@@ -59,21 +59,21 @@ export function BoxInnerPage() {
                         <p className="card-text mb-3">Flammable: 
                             {
                                 boxData.type_f_id === 1
-                                    ? <span className="badge text-bg-danger">Yes</span>
-                                    : <span className="badge text-bg-warning">No</span>
-                            }
+                                    ? <span className="border border-danger p-1"> YES ❌</span>
+                                    : <span className='border border-primary p-1'> NO ✔️</span>
+                            } 
                         </p>
                         <p className="card-text mb-3">Perishable:
                             {
                                 boxData.type_p_id === 1
-                                    ? <span className="badge text-bg-danger">Yes</span>
-                                    : <span className="badge text-bg-warning">No</span>
+                                    ? <span className="border border-danger p-1"> YES 🔥</span>
+                                    : <span className='border border-primary p-1'> NO ✖️ </span>
                             }
                         </p>
                     </div>
                     <img src={boxData.img ? (SERVER_ADDRESS + '/img/boxes/' + boxData.img) : defaultImgUrl} alt="Box thumbnail" className="col-12 col-lg-4 object-fit-contain" />
                 </div>
             </div>
-        </main>
+        </main> 
     );
 }

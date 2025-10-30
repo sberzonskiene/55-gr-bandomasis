@@ -28,7 +28,7 @@ export function AdminContainersTableRow({ container }) {
             <td>{container.url_slug}</td>
             <td>{container.size}</td>
             <td>{container.boxesCount}</td>
-            <td>{container.boxesNeto}</td> 
+            <td>{container.boxesNeto ? container.boxesNeto : '0'}</td> 
             <td>
                 {
                     container.status_name === 'published'

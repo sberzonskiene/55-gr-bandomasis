@@ -10,7 +10,14 @@ export async function getPublicContainers(req, res) {
                 WHERE container_id = containers.id AND status_id = (
                     SELECT id FROM general_status WHERE name = "published"
                 )
-            ) AS boxesCount
+            ) AS boxesCount,
+            (
+                SELECT SUM(neto)
+                FROM boxes
+                WHERE container_id = containers.id AND status_id = (
+                    SELECT id FROM general_status WHERE name = "published"
+                )
+            ) AS boxesNeto
             FROM containers
             WHERE status_id = (
                 SELECT id FROM general_status WHERE name = "published"

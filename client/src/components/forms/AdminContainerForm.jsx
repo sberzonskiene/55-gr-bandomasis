@@ -6,6 +6,7 @@ export function AdminContainerForm({ api, method, container }) {
     const [url, setUrl] = useState(container?.url_slug ?? '');
     const [size, setSize] = useState(container?.size ?? '');
     const [status, setStatus] = useState(container?.status_name ?? 'draft');
+    
     const navigate = useNavigate();
 
     function handleFormSubmit(e) {
