@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { AdminPageTitle } from "../../../components/AdminPageTitle";
 import { Alert } from "../../../components/Alert";
-import { AdminContainerForm } from "../../../components/forms/AdminContainerForm";
+import { AdminEditContainerForm } from "../../../components/forms/AdminEditContainerForm";
 import { ContainersContext } from "../../../context/containers/ContainersContext";
 import { useParams } from "react-router";
 import { SERVER_ADDRESS } from "../../../env";
@@ -20,7 +20,7 @@ export function AdminEditContainerPage() {
                 <div className="row">
                     {
                         containerData
-                            ? <AdminContainerForm
+                            ? <AdminEditContainerForm
                                 api={SERVER_ADDRESS + "/api/admin/containers/" + containerData.url_slug}
                                 method="PUT"
                                 container={containerData} />

@@ -1,4 +1,4 @@
-export function formatRandomId() {
+/*export function formatRandomId() {
     const chars = "0123456789";
     const randomLength = 7;
     let random = "";
@@ -8,4 +8,5 @@ export function formatRandomId() {
     }
     return random;
 }
-console.log(formatRandomId(7));
+console.log(formatRandomId(7));*/
+

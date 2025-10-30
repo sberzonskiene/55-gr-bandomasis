@@ -53,7 +53,7 @@ export function BoxInnerPage() {
             <div className="container">
                 <div className="row">
                     <div className="col-12 col-lg-6 mb-5">
-                        <strong className="d-inline-block mb-2 text-primary-emphasis">{containerData.size}/{containerData.number}</strong>
+                        <strong className="d-inline-block mb-2 text-primary-emphasis">{containerData.size} {containerData.number}</strong>
                         <h1 className="display-2">{boxData.title}</h1>
                         <p className="card-text mb-3">Neto: {boxData.neto} g</p>
                         <p className="card-text mb-3">Flammable: 

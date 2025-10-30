@@ -16,7 +16,7 @@ export function BoxCard({ box }) {
         <div className="col-12 col-md-6">
             <div className="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
                 <div className="col-12 col-lg-8 p-4 d-flex flex-column position-static">
-                    <strong className="d-inline-block mb-2 text-primary-emphasis">{containerData.size}/{containerData.number}</strong>
+                    <strong className="d-inline-block mb-2 text-primary-emphasis">{containerData.size} {containerData.number}</strong>
                     <h3 className="mb-0">{box.title}</h3>
                     <p className="card-text mb-auto">Neto: {box.neto} g</p>
                     <p className="card-text mb-auto">Flammable: {

@@ -9,10 +9,16 @@ export async function getAdminContainers(req, res) {
                 FROM boxes
                 WHERE container_id = containers.id
             ) AS boxesCount,
+            (
+                SELECT SUM(neto)
+                FROM boxes
+                WHERE container_id = containers.id
+            ) AS boxesNeto,
             general_status.name AS status_name
             FROM containers
             INNER JOIN general_status
-                ON containers.status_id = general_status.id;`;        
+                ON containers.status_id = general_status.id;
+            `;        
         const [containers] = await connection.execute(sql);
 
         return res.json({
